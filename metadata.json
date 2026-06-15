@@ -1,0 +1,6 @@
+{
+  "name": "Fazenda Santa Cecília",
+  "description": "Apresentação de luxo e assistente interativo para a espetacular Fazenda Santa Cecília em Patrocínio Paulista, SP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
