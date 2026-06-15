@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: "/Site-Fazenda-Santa-Cec-lia/",
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
