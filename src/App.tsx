@@ -10,8 +10,10 @@ import InteractiveMap from "./components/InteractiveMap";
 import InvestmentCalculator from "./components/InvestmentCalculator";
 import ContactForm from "./components/ContactForm";
 import ConciergeChat from "./components/ConciergeChat";
+import ForestPage from "./components/ForestPage";
 
 export default function App() {
+  const [viewingForest, setViewingForest] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +32,11 @@ export default function App() {
   const handleLearnMore = (id: string) => {
     const found = FeaturesData.find(f => f.id === id);
     if (found) {
-      setSelectedFeature(found);
+      if (id === "floresta") {
+        setViewingForest(true);
+      } else {
+        setSelectedFeature(found);
+      }
     }
   };
 
@@ -59,6 +65,15 @@ export default function App() {
     }
     setIsMenuOpen(false);
   };
+
+  if (viewingForest) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <ForestPage onBack={() => setViewingForest(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0f1111] text-white font-sans antialiased relative selection:bg-gold selection:text-dark">
@@ -265,7 +280,7 @@ export default function App() {
         {FeaturesData.map((feature) => (
           <motion.article 
             key={feature.id}
-            onClick={() => setSelectedFeature(feature)}
+            onClick={() => handleLearnMore(feature.id)}
             className="relative h-[30vh] lg:h-[45vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
           >
             {/* Background image covering 100% */}
@@ -298,7 +313,7 @@ export default function App() {
               <button 
                 onClick={(e) => {
                   e.stopPropagation(); // prevent double modal triggering
-                  setSelectedFeature(feature);
+                  handleLearnMore(feature.id);
                 }}
                 className="border border-white/30 px-5 py-2.5 text-[10px] tracking-widest font-semibold uppercase text-white rounded-none flex items-center justify-center gap-2 hover:bg-white/10 hover:border-white/55 transition duration-300 pointer-events-auto cursor-pointer whitespace-nowrap"
               >
