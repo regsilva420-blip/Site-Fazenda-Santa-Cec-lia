@@ -96,8 +96,6 @@ export default function App() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6 text-[10px] uppercase tracking-widest font-semibold text-gray-300">
           <button onClick={() => scrollToSection("detalhes")} className="hover:text-gold transition-colors cursor-pointer">Recursos</button>
-          <button onClick={() => scrollToSection("zoneamento")} className="hover:text-gold transition-colors cursor-pointer">Mapa do Imóvel</button>
-          <button onClick={() => scrollToSection("financeiro")} className="hover:text-gold transition-colors cursor-pointer">Rentabilidade</button>
           <button onClick={() => scrollToSection("agendar-visita")} className="hover:text-gold transition-colors cursor-pointer text-gold">Agendar Visita</button>
         </nav>
 
@@ -159,8 +157,6 @@ export default function App() {
                 <div className="space-y-3 flex flex-col">
                   {[
                     { label: "Visão Geral & Recursos", id: "detalhes" },
-                    { label: "Zoneamento & Mapa", id: "zoneamento" },
-                    { label: "Rentabilidade de Cultivo", id: "financeiro" },
                     { label: "Estufa de Tecnologia", id: "detalhes", subId: "agricola" },
                     { label: "Casa Sede & Lazer", id: "detalhes", subId: "sede" },
                     { label: "Recursos Hídricos", id: "detalhes", subId: "hidricos" },
@@ -276,14 +272,16 @@ export default function App() {
             className="relative h-[30vh] lg:h-[45vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
           >
             {/* Background image covering 100% */}
-            <img 
-              src={feature.image} 
-              alt={feature.title} 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-102"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000";
-              }}
-            />
+            {feature.id !== "lazer" && feature.id !== "hidricos" && feature.id !== "agricola" && (
+              <img 
+                src={feature.image} 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-102"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000";
+                }}
+              />
+            )}
             
             {/* Elegant dark overlay gradient */}
             <div className="absolute inset-0 bg-black/35 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity group-hover:opacity-90" />
@@ -316,32 +314,6 @@ export default function App() {
             </div>
           </motion.article>
         ))}
-      </section>
-
-      {/* 5. Architectural Map Area */}
-      <section id="zoneamento" className="py-16 md:py-24 px-6 bg-[#0c0d0d] border-t border-b border-white/5">
-        <div className="max-w-7xl mx-auto space-y-10">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-[11px] uppercase tracking-[0.3em] font-extrabold text-gold block">
-              GEOLOCALIZAÇÃO & ZONEAMENTO
-            </span>
-            <h2 className="font-serif text-3xl font-bold tracking-tight text-white">
-              Visualização de Implantação do Imóvel
-            </h2>
-            <p className="text-xs md:text-sm text-gray-400 font-light leading-relaxed">
-              Explore a distribuição topofísica das divisórias ecológicas, poços, estufas e construções no mapa interativo. Toque nos marcados pulsadores para decifrar a logística.
-            </p>
-          </div>
-
-          <InteractiveMap onLearnMore={handleLearnMore} />
-        </div>
-      </section>
-
-      {/* 6. Investment Simulator Area */}
-      <section id="financeiro" className="py-16 md:py-24 px-6 bg-[#0f1111]">
-        <div className="max-w-7xl mx-auto">
-          <InvestmentCalculator />
-        </div>
       </section>
 
       {/* 7. Contact Consultation Dock */}

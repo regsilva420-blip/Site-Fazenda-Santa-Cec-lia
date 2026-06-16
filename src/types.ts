@@ -44,26 +44,26 @@ export const FeaturesData: FeatureCard[] = [
     shortDesc: "Localização estratégica em Patrocínio Paulista, com topografia propícia e solo de alta fertilidade.",
     detailedDesc: "Com uma área total de 63 hectares disponíveis para venda, a fazenda se destaca pelo equilíbrio entre conservação ecológica, lazer e áreas produtivas prontas para gerar receita. Toda a propriedade está em estrita conformidade com a legislação ambiental vigente, garantindo uma transação jurídica segura e sem pendências.",
     metrics: [
-      { label: "Área Total", value: "63 Hectares" },
+      { label: "Reserva Legal", value: "41 hectares" },
       { label: "Área Agricultável", value: "10 hectares" },
-      { label: "Tipo de Solo", value: "Terra Roxa Fértil" },
-      { label: "Topografia", value: "Plana / Ondulada Média" }
+      { label: "Sede e Área de Lazer", value: "2 hectares" },
+      { label: "Área de Preservação Permanente", value: "10 hectares" }
     ],
     specifications: [
-      "Acesso por asfalto excelente até o portão principal",
-      "Totalmente cercada com mourões de eucalipto tratado e arame liso",
-      "Georreferenciamento (GEO) e CAR homologados",
-      "Subdivisões internas planejadas para maximizar o fluxo logístico"
+      "10 hectares de terras férteis prontas para pecuária, cultivo de lavouras, agroflorestas ou expansão agrícola.",
+      "Sede e área de lazer totalmente estruturadas para a vivência, bem-estar, paisagismo e infraestrutura social da propriedade.",
+      "10 hectares dedicados à proteção dos recursos hídricos.",
+      "41 hectares de mata nativa preservada, funcionando como um valioso ativo ambiental."
     ]
   },
   {
     id: "sede",
-    category: "7 Quartos · 450 M²",
+    category: "Funcionalidade e Tradição",
     title: "Casa Sede",
-    subtitle: "Luxo rústico contemporâneo sob medida",
+    subtitle: "Residência histórica preservada.",
     image: "https://lh3.googleusercontent.com/aida/AP1WRLtNBCo6JGPJ7gbuWrwOGvUH-1dNVHjoxEt2Svg01qa_No8fRAMquotAD0HD5hRo44QTM_0lIBZx7fenS5hs-wYOCqM_F73iJ7StCz4E-ujQ1QvBzsHyryUcbVhW25AFWaLlj4Y-Al4PyEpm94h-qCWe9S-BzgSR3YoaIh8o8R0Q4d__w34Jycr1AKrpqOpz_e4VUrmA6SQrkB3NSFshADxC2KuI2iWhhIIbvrzIw1Rl9Ljdiq5LQ9uZOV4X",
     shortDesc: "Mansão de campo maravilhosa com living panorâmico, design de interiores impecável e 7 quartos espaçosos.",
-    detailedDesc: "A imponente Casa Sede é uma obra de arte da arquitetura rústica moderna. Seus 450m² de área construída abrigam 7 dormitórios espetaculares, sendo 4 suítes com closet e banheiros privativos equipados com aquecimento solar. O ponto central da residência é um majestoso living integrado com pé-direito imenso e lareira central de pedra rústica, conectando-se a uma charmosa cozinha gourmet de estilo caipira moderno com fogão a lenha de ferro fundido. Toda a residência é envolta por um amplo terraço contínuo com vista impecável das montanhas.",
+    detailedDesc: "Fundada em 1930 e reformada entre 2020 e 2021, a residência mantém sua arquitetura tradicional preservada, combinando o charme das grandes propriedades históricas com o conforto e funcionalidade das atualizações modernas.",
     metrics: [
       { label: "Quartos Disponíveis", value: "7 (4 Suítes Master)" },
       { label: "Área Construída", value: "450 m²" },
@@ -81,10 +81,10 @@ export const FeaturesData: FeatureCard[] = [
     id: "lazer",
     category: "Infraestrutura",
     title: "Lazer e Convivência",
-    subtitle: "Clube privado espetacular com borda infinita",
+    subtitle: "O Cenário Perfeito.",
     image: "https://lh3.googleusercontent.com/aida/AP1WRLszlM6uVXJhZ9h6EpUW8WYKZuc41r8fe4eTJOgxOmGPreh1CNM5FCO_VmTpqTkgFTL3g6-MjtBZlXKtAJWTbO7Khu06VCgMfE4Anx9uE_kNVgtTQLD7w-Bp4AR9-lb6B0tWv2De2koKOPwfnoqxU_7eqofoNW9KzcWizimX9Uf8a9dAHbJmkSg2jW_5gsGJEp1LFZjA3Bp9H4_hXSk99lMlZJPMwCsCvRM4rsnv3kLplMuTNVEIiaY0auU",
     shortDesc: "Piscina aquecida de borda infinita, quadra de tênis oficial, sauna e spa integrados do mais alto padrão.",
-    detailedDesc: "Um verdadeiro resort privado à sua disposição. Com projeto paisagístico deslumbrante, a fazenda apresenta uma magnífica piscina de borda infinita aquecida por coletores solares dedicados, integrando-se perfeitamente com a paisagem rural. Conta também com uma excelente quadra de tênis de saibro estruturada com drenagem rápida e iluminação LED, SPA completo com sauna úmida/seca e área de massagem, e um pitoresco fogo de chão (fire pit) esculpido em blocos de granito para noites sob o céu estrelado.",
+    detailedDesc: "A fazenda oferece uma infraestrutura de lazer completa e perfeitamente integrada à natureza, projetada tanto para o descanso em família quanto para sediar grandes eventos e recepções.",
     metrics: [
       { label: "Piscina Borda Infinita", value: "Pedra Hijau Natural" },
       { label: "Quadra de Tênis", value: "Saibro Ofic. c/ Ilum." },
@@ -100,12 +100,12 @@ export const FeaturesData: FeatureCard[] = [
   },
   {
     id: "hidricos",
-    category: "Nascentes Próprias",
+    category: "Riqueza e Autossuficiência",
     title: "Recursos Hídricos",
-    subtitle: "Riqueza de águas puras com represas e cascatas",
+    subtitle: "Funcional, robusta e com potencial comercial",
     image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&q=80&w=1200", // GORGEOUS water stream / waterfall in forest.
     shortDesc: "Três nascentes intocadas, cachoeira interna deslumbrante, ribeirão limpo e represas próprias.",
-    detailedDesc: "A abundância de recursos hídricos é o maior trunfo ecológico e patrimonial da Fazenda Santa Cecília. A propriedade abriga 3 nascentes de água mineral puríssima que jorram continuamente da rocha. Conta com um riacho de fluxo perene que serpenteia as áreas de cultivo e mata, garantindo fartura para irrigação regularizada e lazer. Possui 2 belíssimas represas exclusivas, perfeitas para esportes aquáticos não motorizados (stand-up paddle, caiaque) e criação abundante de peixes nativos.",
+    detailedDesc: "Um dos maiores tesouros da fazenda é sua impressionante abundância em recursos hídricos naturais — segurança hídrica estratégica e enorme potencial para lazer, paisagismo e atividades agroecológicas.",
     metrics: [
       { label: "Nascentes Minerais", value: "3 Fontes Ativas" },
       { label: "Represas Próprias", value: "2 Lagos Formados" },
@@ -121,12 +121,12 @@ export const FeaturesData: FeatureCard[] = [
   },
   {
     id: "agricola",
-    category: "Estufa 2.200 M²",
+    category: "Alta Tecnologia e Versatilidade",
     title: "Produção Agrícola",
-    subtitle: "Estufa climatizada de altíssima produtividade",
+    subtitle: "Estufa com irrigação automatizada de alta produtividade",
     image: "https://lh3.googleusercontent.com/aida/AP1WRLsDu_SSnf5Ldjfitsrg12F562FuszjJrONjFVC-y2Kv2HRuD3EXlKs6teZdexosfrT6fVJnUVToXlfe-NNj7AGZcLj0j_vxppVdOzyNCDQ34_17juJliElxPsdE47p8p2dG4sgyUHEHmbuBEPqdCMb5WgnX5UwnE-4Qw0jftzdelYhT_mxyToc4H7QWVrnx69r8ti5Hhc5G1mvlxjyzd8pbvnthsFtHY1wfmkg5ccGg4XVquwyEryj95Vfq",
     shortDesc: "Estrutura hidropônica automatizada pronta para cultivo de hortifrúti de valor agregado ou mudas especiais.",
-    detailedDesc: "Voltada para a agricultura de alta rentabilidade com tecnologia de ponta, a fazenda apresenta uma megacriação de estufa com 2.200m² de área útil total. Equipada com painéis térmicos contra radiação UV, controle de temperatura por nebulização de névoa fina automática e um console inteligente de fertirrigação computadorizada, a estrutura está pronta para a produção contínua de hortaliças gourmet, flores de luxo ou mudas de café especial.",
+    detailedDesc: "Estufa profissional de última geração, com engenharia de precisão para máxima produtividade e controle climático em todas as estações.",
     metrics: [
       { label: "Área da Estufa", value: "2.200 m²" },
       { label: "Irrigação", value: "Gotejamento & Fertirrigação" },
@@ -159,6 +159,27 @@ export const FeaturesData: FeatureCard[] = [
       "Tanque de expansão em aço inox de 1000 litros instalado",
       "Piso com canaletas de drenagem e poço de decantação ecológico",
       "Farmácia veterinária interna com armários refrigerados"
+    ]
+  },
+  {
+    id: "infraestrutura",
+    category: "Infraestrutura",
+    title: "Autossuficiência e Segurança",
+    subtitle: "Sistemas robustos de energia autônoma e monitoramento ativo",
+    image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=1200",
+    shortDesc: "Subestação de energia trifásica com gerador a diesel automático de 50kVA e monitoramento integral.",
+    detailedDesc: "A Fazenda Santa Cecília foi concebida sob os pilares da segurança patrimonial absoluta e da eficiência operacional contínua. Conta com sistema de monitoramento profissional de alta definição e rede elétrica trifásica com transformador independente de alta capacidade, amparada por um gerador a diesel automático cabinado de 50kVA redundante. Toda essa estrutura garante que as áreas de lazer, casa sede, ordenhadeiras e estufa nunca parem.",
+    metrics: [
+      { label: "Energia de Reserva", value: "Gerador Auto 50kVA" },
+      { label: "Segurança Ativa", value: "Monitoramento 24h" },
+      { label: "Rede Elétrica", value: "Trifásica Dedicada" },
+      { label: "Conectividade", value: "Fibra Óptica IP" }
+    ],
+    specifications: [
+      "Gerador automático cabinado silencioso de 50kVA com acionamento em segundos",
+      "Câmeras IP de monitoramento monitoradas à distância com visão noturna",
+      "Rede trifásica privada com transformador e cabeamento subterrâneo",
+      "Guarita de segurança e portão de acesso eletrônico no pórtico de entrada"
     ]
   },
   {
