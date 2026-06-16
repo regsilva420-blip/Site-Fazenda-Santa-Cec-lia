@@ -78,9 +78,11 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
               <h2 className="font-serif text-2xl md:text-3xl font-bold text-white tracking-tight mb-1">
                 {feature.title}
               </h2>
-              <p className="text-xs text-white/70 italic font-light">
-                {feature.subtitle}
-              </p>
+              {feature.subtitle && (
+                <p className="text-xs text-white/70 italic font-light">
+                  {feature.subtitle}
+                </p>
+              )}
             </div>
           </div>
 
@@ -97,7 +99,7 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
 
               {/* Grid with Key Metrics */}
               <div>
-                <h4 className="text-[10px] uppercase tracking-widest text-gold font-bold mb-3">Dados & Métricas</h4>
+                <h4 className="text-[10px] uppercase tracking-widest text-gold font-bold mb-3">Dados</h4>
                 <div className="grid grid-cols-2 gap-3">
                   {feature.metrics.map((metric, idx) => (
                     <div key={idx} className="p-3 rounded-lg bg-white/5 border border-white/5 hover:border-gold/20 transition-colors">

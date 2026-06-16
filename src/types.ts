@@ -17,7 +17,7 @@ export const FeaturesData: FeatureCard[] = [
   {
     id: "floresta",
     category: "Meio Ambiente",
-    title: "Serviços da Floresta",
+    title: "Reserva de Biodiversidade",
     subtitle: "63 Hectares preservados na Mata Atlântica",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBY30spNZiLlmScVAJw6ZkSysxAxxGNa8OmlBUIITk_0-vhk6VgpNCe2SZ-c0hSMZOXwLRZFCkTT7WR61q7pkEVXr5NKM8bYan16EgGyWcHOhR7MqWEiBVp8gAWg1EZptH-cqcChRuBBWLFv8HjXstJ3CYuaJrTs1miixtz0O4phhQeyItWIe9ueA-_vsU6k0cwiyTj28-F9kA2p2UPy17hP_FGqSMXN4_cY5sqodU4rZ0tfS5f-yQxGc8RVSqq6B1lsplg1rYncLLQk7o",
     shortDesc: "Reserva de Mata Atlântica com trilhas, rica biodiversidade e ar puro, propícia para crédito de carbono e ecoturismo.",
@@ -37,15 +37,15 @@ export const FeaturesData: FeatureCard[] = [
   },
   {
     id: "terreno",
-    category: "63 Hectares",
+    category: "Área da Propriedade",
     title: "Informações do Terreno",
-    subtitle: "Altitude ideal e fertilidade espetacular",
+    subtitle: "",
     image: "https://lh3.googleusercontent.com/aida/AP1WRLukWba-4xA1TwChX8JnfslRAIq5uJm8e1l4Vev3hiAdenBsSpjDa610fMFQPEJFy4x9yS6ZpLqYK4f6xPYBQjzbWyoxvBV0gHE3qaVsXoMiRnSdZAs_x3cdyzM-Bo_wuETPe3d6DlEvdLVx2Zx7_b7hf_08BFwvTmPsnkVEMk5SrtsUyKlVo7u7n6mwCKvqq6tZ4WiHj96yIjSCDCqmuwt-wsxAWufM6nNt3HvwCz8OA4OJLu4yQ39HiGHl",
     shortDesc: "Localização estratégica em Patrocínio Paulista, com topografia propícia e solo de alta fertilidade.",
-    detailedDesc: "Com solo fértil de terra vermelha de altíssima qualidade (rica em nutrientes), o terreno apresenta topografia moderadamente ondulada a plana, facilitando o manejo automatizado. A altitude média de 950 metros proporciona temperaturas amenas o ano todo, ideais tanto para agricultura de precisão de alta rentabilidade (cafés gourmet e hortifrúti de estufa) quanto para moradia com conforto climático de excelência. A propriedade conta com acessos pavimentados de alta qualidade.",
+    detailedDesc: "Com uma área total de 63 hectares disponíveis para venda, a fazenda se destaca pelo equilíbrio entre conservação ecológica, lazer e áreas produtivas prontas para gerar receita. Toda a propriedade está em estrita conformidade com a legislação ambiental vigente, garantindo uma transação jurídica segura e sem pendências.",
     metrics: [
       { label: "Área Total", value: "63 Hectares" },
-      { label: "Altitude Média", value: "950 Metros" },
+      { label: "Área Agricultável", value: "10 hectares" },
       { label: "Tipo de Solo", value: "Terra Roxa Fértil" },
       { label: "Topografia", value: "Plana / Ondulada Média" }
     ],

@@ -218,7 +218,7 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-overlay" />
         
         {/* Content Box */}
-        <div className="absolute bottom-0 left-0 right-0 px-6 pb-20 md:pb-24 max-w-7xl mx-auto flex flex-col items-start text-left z-10 space-y-4">
+        <div className="absolute top-[50%] bottom-[10%] left-0 right-0 px-6 max-w-7xl mx-auto flex flex-col items-start justify-center text-left z-10 space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,7 +227,7 @@ export default function App() {
           >
             <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-gold font-bold">
               <MapPin className="w-3.5 h-3.5 shrink-0" />
-              Patrocínio Paulista - SP (Mantiqueira/Serrana)
+              Patrocínio Paulista - SP
             </span>
             
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold font-serif leading-none tracking-tight text-white max-w-2xl">
@@ -236,15 +236,7 @@ export default function App() {
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 pt-2">
               <div className="text-sm text-gray-300 font-light tracking-wide">
-                <span className="text-white font-semibold">63 Hectares</span> de Terras Produtivas
-              </div>
-              <div className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-gold" />
-              <div className="text-sm text-gray-300 font-light tracking-wide">
-                Bioma <span className="text-white font-semibold">Mata Atlântica</span> Preservada
-              </div>
-              <div className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-gold" />
-              <div className="text-sm text-gray-300 font-light tracking-wide">
-                <span className="text-white font-semibold">3 Nascentes</span> Minerais Próprias
+                <span className="text-white font-semibold font-serif italic">Um santuário de vida</span> no nordeste paulista
               </div>
             </div>
           </motion.div>

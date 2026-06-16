@@ -3,11 +3,54 @@ import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
 import { createServer as createViteServer } from "vite";
+import pkg from "pg";
 
 dotenv.config();
 
+const { Pool } = pkg;
 const app = express();
 const PORT = 3000;
+
+// Lazy initialize PostgreSQL Pool to prevent crash if DATABASE_URL is not set
+let pgPool: any = null;
+
+async function getPgPool() {
+  if (!pgPool) {
+    const connectionString = process.env.DATABASE_URL;
+    if (!connectionString) {
+      console.warn("[Database Warning] DATABASE_URL is not set. Data will only persist in-memory.");
+      return null;
+    }
+    try {
+      pgPool = new Pool({
+        connectionString,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      });
+      // Initial test connection & table setup
+      const client = await pgPool.connect();
+      await client.query(`
+        CREATE TABLE IF NOT EXISTS contacts (
+          id VARCHAR(50) PRIMARY KEY,
+          name VARCHAR(255) NOT NULL,
+          email VARCHAR(255) NOT NULL,
+          phone VARCHAR(100) NOT NULL,
+          interest VARCHAR(255) NOT NULL,
+          message TEXT,
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      client.release();
+      console.log("[Database] Supabase PostgreSQL successfully connected and 'contacts' table is verified.");
+    } catch (err: any) {
+      console.error("[Database Error] Failed to initialize Supabase connection pool:", err.message);
+      pgPool = null;
+      return null;
+    }
+  }
+  return pgPool;
+}
 
 app.use(express.json());
 
@@ -136,7 +179,7 @@ interface ContactSubmission {
 }
 const submissions: ContactSubmission[] = [];
 
-app.post("/api/contact", (req: Request, res: Response) => {
+app.post("/api/contact", async (req: Request, res: Response) => {
   try {
     const { name, email, phone, interest, message } = req.body;
     if (!name || !email || !phone || !interest) {
@@ -155,7 +198,29 @@ app.post("/api/contact", (req: Request, res: Response) => {
     };
 
     submissions.push(newSubmission);
-    console.log("New contact submission captured:", newSubmission);
+    console.log("New contact submission captured in-memory:", newSubmission);
+
+    // Save to Supabase PostgreSQL database if available
+    const pool = await getPgPool();
+    if (pool) {
+      try {
+        await pool.query(
+          "INSERT INTO contacts (id, name, email, phone, interest, message, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+          [
+            newSubmission.id,
+            newSubmission.name,
+            newSubmission.email,
+            newSubmission.phone,
+            newSubmission.interest,
+            newSubmission.message || null,
+            newSubmission.createdAt,
+          ]
+        );
+        console.log("[Database] Captured and saved submission successfully in Supabase.");
+      } catch (dbErr: any) {
+        console.error("[Database Error] Failed to save contact submission to PostgreSQL:", dbErr.message);
+      }
+    }
 
     res.json({
       success: true,
@@ -163,6 +228,7 @@ app.post("/api/contact", (req: Request, res: Response) => {
       submissionId: newSubmission.id,
     });
   } catch (err: any) {
+    console.error("Error saving contact:", err);
     res.status(500).json({ error: "Erro ao processar contato." });
   }
 });

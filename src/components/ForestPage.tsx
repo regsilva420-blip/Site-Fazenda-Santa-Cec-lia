@@ -24,7 +24,7 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           Imóvel
         </button>
         <div className="text-xs font-semibold uppercase tracking-widest text-gold/60 font-mono">
-          &rarr; Serviços
+          &rarr; Reserva de Biodiversidade
         </div>
       </header>
 
@@ -36,9 +36,9 @@ export default function ForestPage({ onBack }: ForestPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight"
+            className="font-serif text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight"
           >
-            Serviços da <br className="hidden md:inline" /> Floresta
+            O encontro entre a <br className="hidden md:inline" /> Mata Atlântica e o Cerrado.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,15 @@ export default function ForestPage({ onBack }: ForestPageProps) {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base md:text-lg text-gray-300 font-light leading-relaxed max-w-2xl"
           >
-            A Mata Atlântica da fazenda funciona como um ecossistema vivo — gerando recursos, atraindo fauna silvestre e garantindo serviços ambientais de alto valor para o proprietário.
+            Um dos mais importantes remanescentes naturais do nordeste paulista - mata nativa preservada, fonte de biodiversidade, água e equilíbrio para toda a região.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base md:text-lg text-gray-300 font-light leading-relaxed max-w-2xl"
+          >
+            A Reserva da Fazenda Santa Cecília é um corredor ecológico indispensável para a preservação ambiental. Com a presença de diferentes tipos de solos, se caracteriza como um mosaico único entre o Cerrado e a Mata Atlântica, proporcionando alta diversidade ecológica e biológica.
           </motion.p>
         </section>
 
@@ -81,10 +89,10 @@ export default function ForestPage({ onBack }: ForestPageProps) {
         {/* Subsection 01: Árvores nativas */}
         <section className="space-y-4 pt-4 border-t border-white/5">
           <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug max-w-2xl">
-            Mais de 80 espécies de árvores nativas
+            Serviços da Floresta
           </h2>
           <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
-            Levantamento florístico identificou 84 espécies arbóreas, incluindo ipê-amarelo, cedro, jequitibá e canela. A floresta em estágio avançado de regeneração garante serviços ecossistêmicos permanentes.
+            A Reserva da Fazenda Santa Cecília desempenha papel fundamental na conservação dos recursos hídricos regionais e funciona como um reservatório de biomassa, contribuindo para o armazenamento de carbono e equilíbrio climático.
           </p>
         </section>
 
@@ -100,14 +108,11 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </div>
           
           <div className="space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#C9C2A6] font-semibold font-sans block">
-              02 — FAUNA
-            </span>
             <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug">
-              Refúgio para a fauna silvestre
+              Fauna e Flora
             </h2>
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
-              Registros fotográficos confirmam a presença de queixada, paca, tatu-galinha e mais de 60 espécies de aves, incluindo o tucano-toco e a jacutinga — espécies ameaçadas de extinção.
+              Com mais de 170 espécies de plantas registradas, a reserva possui árvores centenárias e ameaçadas e raras, como o jequitibá-rosa, a palmeira-juçara  e a peroba-rosa.
             </p>
           </div>
         </section>
@@ -124,14 +129,8 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </div>
 
           <div className="space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#C9C2A6] font-semibold font-sans block">
-              03 — ECOTURISMO
-            </span>
-            <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug">
-              Trilhas e observação de pássaros
-            </h2>
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
-              Mais de 3 km de trilhas demarcadas percorrem a reserva, com mirantes naturais e pontos de observação de aves. Alto potencial para turismo de natureza, retiros e atividades de educação ambiental.
+              Refúgio para a fauna, a reserva é lar de animais icônicos e ameaçados como o papagaio-verdadeiro, o lobo-guará e o tamanduá-bandeira.
             </p>
           </div>
         </section>
@@ -148,14 +147,39 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </div>
 
           <div className="space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#C9C2A6] font-semibold font-sans block">
-              04 — CRÉDITOS DE CARBONO
-            </span>
-            <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug">
-              Ativo ambiental certificável
+            <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl" id="aves-p">
+              Mais de 180 espécies de aves encontram na reserva um local seguro para abrigo, alimentação e reprodução
+            </p>
+
+            {/* Espaço para imagem */}
+            <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative my-6" id="abelhas-img-space">
+              <img
+                src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=1200"
+                alt="Abelha polinizadora em flor nativa"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+
+            <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl" id="abelhas-p">
+              Já foram registradas 12 espécies de abelhas nativas, polinizadores que aumentam a produtividade das lavouras locais.
+            </p>
+
+            {/* Espaço para imagem de pesquisa */}
+            <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative my-6" id="pesquisa-img-space">
+              <img
+                src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200"
+                alt="Estudos e pesquisa na floresta"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+
+            <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug pt-2" id="pesquisa-h2">
+              Pesquisa
             </h2>
-            <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
-              A biomassa florestal e a reserva legal permanente qualificam a propriedade para programas de créditos de carbono e pagamentos por serviços ambientais, gerando receita adicional sem intervenção.
+            <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl" id="pesquisa-p">
+              Utilizada como laboratório científico de campo por universidades, gerando conhecimento para o futuro da conservação.
             </p>
           </div>
         </section>
