@@ -16,6 +16,8 @@ import CasaSedePage from "./components/CasaSedePage";
 import AreaLazerPage from "./components/AreaLazerPage";
 import RecursosHidricosPage from "./components/RecursosHidricosPage";
 import ProducaoAgricolaPage from "./components/ProducaoAgricolaPage";
+import PecuariaPage from "./components/PecuariaPage";
+import InfraestruturaPage from "./components/InfraestruturaPage";
 
 export default function App() {
   const [viewingForest, setViewingForest] = useState(false);
@@ -24,6 +26,8 @@ export default function App() {
   const [viewingAreaLazer, setViewingAreaLazer] = useState(false);
   const [viewingRecursosHidricos, setViewingRecursosHidricos] = useState(false);
   const [viewingProducaoAgricola, setViewingProducaoAgricola] = useState(false);
+  const [viewingPecuaria, setViewingPecuaria] = useState(false);
+  const [viewingInfraestrutura, setViewingInfraestrutura] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -54,6 +58,10 @@ export default function App() {
         setViewingRecursosHidricos(true);
       } else if (id === "agricola") {
         setViewingProducaoAgricola(true);
+      } else if (id === "pecuaria") {
+        setViewingPecuaria(true);
+      } else if (id === "infraestrutura") {
+        setViewingInfraestrutura(true);
       } else {
         setSelectedFeature(found);
       }
@@ -135,6 +143,24 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <ProducaoAgricolaPage onBack={() => setViewingProducaoAgricola(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingPecuaria) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <PecuariaPage onBack={() => setViewingPecuaria(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingInfraestrutura) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <InfraestruturaPage onBack={() => setViewingInfraestrutura(false)} />
         <ConciergeChat />
       </div>
     );
@@ -269,7 +295,6 @@ export default function App() {
           muted 
           loop 
           playsInline 
-          poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1500"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/hero-video/hero.mp4" type="video/mp4" />
@@ -346,6 +371,12 @@ export default function App() {
             ) : feature.id === "hidricos" ? (
               <img 
                 src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-05/capa-sec-05.jpg" 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
+              />
+            ) : feature.id === "pecuaria" ? (
+              <img 
+                src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-07/capa-sec-07.jpg" 
                 alt={feature.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
               />

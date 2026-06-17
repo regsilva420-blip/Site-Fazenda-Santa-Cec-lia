@@ -2,7 +2,6 @@ import express, { Request, Response } from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
-import { createServer as createViteServer } from "vite";
 import pkg from "pg";
 
 dotenv.config();
@@ -236,6 +235,7 @@ app.post("/api/contact", async (req: Request, res: Response) => {
 // Serve frontend with Vite integration
 const startServer = async () => {
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
