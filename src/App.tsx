@@ -18,6 +18,7 @@ import RecursosHidricosPage from "./components/RecursosHidricosPage";
 import ProducaoAgricolaPage from "./components/ProducaoAgricolaPage";
 import PecuariaPage from "./components/PecuariaPage";
 import InfraestruturaPage from "./components/InfraestruturaPage";
+import MaquinariosPage from "./components/MaquinariosPage";
 
 export default function App() {
   const [viewingForest, setViewingForest] = useState(false);
@@ -28,6 +29,7 @@ export default function App() {
   const [viewingProducaoAgricola, setViewingProducaoAgricola] = useState(false);
   const [viewingPecuaria, setViewingPecuaria] = useState(false);
   const [viewingInfraestrutura, setViewingInfraestrutura] = useState(false);
+  const [viewingMaquinarios, setViewingMaquinarios] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,6 +44,64 @@ export default function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleBackToHome = (sectionId: string) => {
+    setViewingForest(false);
+    setViewingPropertyArea(false);
+    setViewingCasaSede(false);
+    setViewingAreaLazer(false);
+    setViewingRecursosHidricos(false);
+    setViewingProducaoAgricola(false);
+    setViewingPecuaria(false);
+    setViewingInfraestrutura(false);
+    setViewingMaquinarios(false);
+    
+    window.location.hash = sectionId;
+    
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 100);
+  };
+
+  // Support direct hash scrolling when mounting or toggling detail pages closed
+  useEffect(() => {
+    const isViewingAnyDetail = 
+      viewingForest || 
+      viewingPropertyArea || 
+      viewingCasaSede || 
+      viewingAreaLazer || 
+      viewingRecursosHidricos || 
+      viewingProducaoAgricola || 
+      viewingPecuaria || 
+      viewingInfraestrutura || 
+      viewingMaquinarios;
+
+    if (!isViewingAnyDetail) {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith("#secao-")) {
+        const id = hash.replace("#", "");
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 150);
+      }
+    }
+  }, [
+    viewingForest, 
+    viewingPropertyArea, 
+    viewingCasaSede, 
+    viewingAreaLazer, 
+    viewingRecursosHidricos, 
+    viewingProducaoAgricola, 
+    viewingPecuaria, 
+    viewingInfraestrutura, 
+    viewingMaquinarios
+  ]);
 
   const handleLearnMore = (id: string) => {
     const found = FeaturesData.find(f => f.id === id);
@@ -62,6 +122,8 @@ export default function App() {
         setViewingPecuaria(true);
       } else if (id === "infraestrutura") {
         setViewingInfraestrutura(true);
+      } else if (id === "maquinario") {
+        setViewingMaquinarios(true);
       } else {
         setSelectedFeature(found);
       }
@@ -97,7 +159,7 @@ export default function App() {
   if (viewingForest) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <ForestPage onBack={() => setViewingForest(false)} />
+        <ForestPage onBack={() => handleBackToHome("secao-01")} />
         <ConciergeChat />
       </div>
     );
@@ -106,7 +168,7 @@ export default function App() {
   if (viewingPropertyArea) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <PropertyAreaPage onBack={() => setViewingPropertyArea(false)} />
+        <PropertyAreaPage onBack={() => handleBackToHome("secao-02")} />
         <ConciergeChat />
       </div>
     );
@@ -115,7 +177,7 @@ export default function App() {
   if (viewingCasaSede) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <CasaSedePage onBack={() => setViewingCasaSede(false)} />
+        <CasaSedePage onBack={() => handleBackToHome("secao-03")} />
         <ConciergeChat />
       </div>
     );
@@ -124,7 +186,7 @@ export default function App() {
   if (viewingAreaLazer) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <AreaLazerPage onBack={() => setViewingAreaLazer(false)} />
+        <AreaLazerPage onBack={() => handleBackToHome("secao-04")} />
         <ConciergeChat />
       </div>
     );
@@ -133,7 +195,7 @@ export default function App() {
   if (viewingRecursosHidricos) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <RecursosHidricosPage onBack={() => setViewingRecursosHidricos(false)} />
+        <RecursosHidricosPage onBack={() => handleBackToHome("secao-05")} />
         <ConciergeChat />
       </div>
     );
@@ -142,7 +204,7 @@ export default function App() {
   if (viewingProducaoAgricola) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <ProducaoAgricolaPage onBack={() => setViewingProducaoAgricola(false)} />
+        <ProducaoAgricolaPage onBack={() => handleBackToHome("secao-06")} />
         <ConciergeChat />
       </div>
     );
@@ -151,7 +213,7 @@ export default function App() {
   if (viewingPecuaria) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <PecuariaPage onBack={() => setViewingPecuaria(false)} />
+        <PecuariaPage onBack={() => handleBackToHome("secao-07")} />
         <ConciergeChat />
       </div>
     );
@@ -160,7 +222,16 @@ export default function App() {
   if (viewingInfraestrutura) {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <InfraestruturaPage onBack={() => setViewingInfraestrutura(false)} />
+        <InfraestruturaPage onBack={() => handleBackToHome("secao-08")} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingMaquinarios) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <MaquinariosPage onBack={() => handleBackToHome("secao-09")} />
         <ConciergeChat />
       </div>
     );
@@ -358,6 +429,17 @@ export default function App() {
         {FeaturesData.map((feature) => (
           <motion.article 
             key={feature.id}
+            id={
+              feature.id === "floresta" ? "secao-01" :
+              feature.id === "terreno" ? "secao-02" :
+              feature.id === "sede" ? "secao-03" :
+              feature.id === "lazer" ? "secao-04" :
+              feature.id === "hidricos" ? "secao-05" :
+              feature.id === "agricola" ? "secao-06" :
+              feature.id === "pecuaria" ? "secao-07" :
+              feature.id === "infraestrutura" ? "secao-08" :
+              feature.id === "maquinario" ? "secao-09" : undefined
+            }
             onClick={() => handleLearnMore(feature.id)}
             className="relative h-[30vh] lg:h-[45vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
           >
@@ -377,6 +459,12 @@ export default function App() {
             ) : feature.id === "pecuaria" ? (
               <img 
                 src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-07/capa-sec-07.jpg" 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
+              />
+            ) : feature.id === "infraestrutura" ? (
+              <img 
+                src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-08/capa_sec_08-3.jpg" 
                 alt={feature.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
               />

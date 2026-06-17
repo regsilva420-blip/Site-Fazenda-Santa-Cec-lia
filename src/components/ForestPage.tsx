@@ -65,13 +65,17 @@ export default function ForestPage({ onBack }: ForestPageProps) {
     <div className="min-h-screen bg-[#070808] text-white font-sans antialiased relative selection:bg-gold selection:text-dark">
       {/* Upper breadcrumb navigation bar */}
       <header className="px-6 py-8 md:px-12 max-w-4xl mx-auto flex items-center justify-between">
-        <button
-          onClick={onBack}
+        <a
+          href="/#secao-01"
+          onClick={(e) => {
+            e.preventDefault();
+            onBack();
+          }}
           className="group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#777] hover:text-white transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
           Imóvel
-        </button>
+        </a>
         <div className="text-xs font-semibold uppercase tracking-widest text-gold/60 font-mono">
           &rarr; Reserva de Biodiversidade
         </div>
@@ -112,15 +116,19 @@ export default function ForestPage({ onBack }: ForestPageProps) {
 
         {/* Dynamic elegant back button block aligned centered */}
         <div className="flex flex-col items-center py-6">
-          <motion.button
+          <motion.a
+            href="/#secao-01"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            onClick={onBack}
             className="group flex items-center gap-2 border border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10 px-6 py-3.5 text-[10px] tracking-widest uppercase font-bold text-gray-200 hover:text-white transition-all cursor-pointer rounded-none"
           >
             <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-1 transition-transform text-gold" />
             &lt; Voltar
-          </motion.button>
+          </motion.a>
         </div>
 
         {/* Subsection 01: Árvores nativas */}
@@ -236,15 +244,19 @@ export default function ForestPage({ onBack }: ForestPageProps) {
 
         {/* Bottom footer back block */}
         <div className="flex flex-col items-center pt-16 border-t border-white/5">
-          <motion.button
+          <motion.a
+            href="/#secao-01"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={onBack}
             className="group flex items-center gap-2 border border-white/10 hover:border-gold/30 bg-gold/5 hover:bg-gold hover:text-dark px-10 py-4 text-xs tracking-widest uppercase font-black text-gold transition-all duration-300 cursor-pointer rounded-none"
           >
             <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
             Voltar para o Imóvel
-          </motion.button>
+          </motion.a>
         </div>
       </main>
 

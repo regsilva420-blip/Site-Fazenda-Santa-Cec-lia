@@ -51,13 +51,17 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
     <div className="min-h-screen bg-[#070808] text-white font-sans antialiased relative selection:bg-gold selection:text-dark">
       {/* Upper breadcrumb navigation bar */}
       <header className="px-6 py-8 md:px-12 max-w-4xl mx-auto flex items-center justify-between">
-        <button
-          onClick={onBack}
+        <a
+          href="/#secao-04"
+          onClick={(e) => {
+            e.preventDefault();
+            onBack();
+          }}
           className="group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#777] hover:text-white transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
           Imóvel
-        </button>
+        </a>
         <div className="text-xs font-semibold uppercase tracking-widest text-gold/60 font-mono">
           &rarr; Lazer e Convivência
         </div>
@@ -91,7 +95,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="relative overflow-hidden -mx-6 md:mx-0 md:rounded-xl aspect-video bg-neutral-900/40"
+            className="relative overflow-hidden -mx-6 md:mx-0 md:rounded-xl bg-neutral-900/40"
           >
             <video
               src={video1}
@@ -99,7 +103,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
+              className="w-full h-auto aspect-auto md:aspect-video object-cover transition-all duration-700 ease-in-out hover:scale-105"
             />
           </motion.div>
         </section>
@@ -119,7 +123,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="relative overflow-hidden -mx-6 md:mx-0 md:rounded-xl aspect-video bg-neutral-900/40"
+            className="relative overflow-hidden -mx-6 md:mx-0 md:rounded-xl bg-neutral-900/40"
           >
             <video
               src={video2}
@@ -127,7 +131,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
+              className="w-full h-auto aspect-auto md:aspect-video object-cover transition-all duration-700 ease-in-out hover:scale-105"
             />
           </motion.div>
         </section>
@@ -242,15 +246,19 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
 
         {/* Bottom footer back block */}
         <div className="flex flex-col items-center pt-16 border-t border-white/10">
-          <motion.button
+          <motion.a
+            href="/#secao-04"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            onClick={onBack}
             className="group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold hover:text-white transition-colors cursor-pointer bg-transparent border-t-0 p-4"
           >
             <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
             Voltar para o Imóvel
-          </motion.button>
+          </motion.a>
         </div>
       </main>
 

@@ -48,13 +48,17 @@ export default function ProducaoAgricolaPage({ onBack }: ProducaoAgricolaPagePro
     <div className="min-h-screen bg-[#070808] text-white font-sans antialiased relative selection:bg-gold selection:text-dark">
       {/* Upper breadcrumb navigation bar */}
       <header className="px-6 py-8 md:px-12 max-w-4xl mx-auto flex items-center justify-between">
-        <button
-          onClick={onBack}
+        <a
+          href="/#secao-06"
+          onClick={(e) => {
+            e.preventDefault();
+            onBack();
+          }}
           className="group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#777] hover:text-white transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
           Imóvel
-        </button>
+        </a>
         <div className="text-xs font-semibold uppercase tracking-widest text-gold/60 font-mono">
           &rarr; Produção Agrícola
         </div>
@@ -90,7 +94,7 @@ export default function ProducaoAgricolaPage({ onBack }: ProducaoAgricolaPagePro
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeInOut", delay: 0.2 }}
-            className="relative overflow-hidden md:rounded-xl aspect-video bg-neutral-900/40"
+            className="relative overflow-hidden md:rounded-xl bg-neutral-900/40"
           >
             <video
               src={videoSrc}
@@ -98,7 +102,7 @@ export default function ProducaoAgricolaPage({ onBack }: ProducaoAgricolaPagePro
               muted
               loop
               playsInline
-              className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-[1.03]"
+              className="w-full h-auto aspect-auto md:aspect-video object-cover transition-all duration-700 ease-in-out hover:scale-[1.03]"
             />
           </motion.div>
         </section>
@@ -219,15 +223,19 @@ export default function ProducaoAgricolaPage({ onBack }: ProducaoAgricolaPagePro
 
         {/* Bottom footer back block */}
         <div className="flex flex-col items-center pt-16 border-t border-white/10">
-          <motion.button
+          <motion.a
+            href="/#secao-06"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            onClick={onBack}
             className="group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold hover:text-white transition-colors cursor-pointer bg-transparent border-t-0 p-4"
           >
             <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
             Voltar para o Imóvel
-          </motion.button>
+          </motion.a>
         </div>
       </main>
 
