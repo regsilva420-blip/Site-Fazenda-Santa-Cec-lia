@@ -58,11 +58,11 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
           </button>
 
           {/* Left panel: Image & Core Info Overlay */}
-          <div className="relative w-full md:w-5/12 h-[200px] md:h-auto min-h-[250px] bg-dark flex-shrink-0">
+          <div className="relative w-full md:w-5/12 h-[200px] md:h-auto min-h-[250px] bg-dark flex-shrink-0 overflow-hidden">
             <img
               src={feature.image}
               alt={feature.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
               onError={(e) => {
                 // If direct link fails, replace with high-end luxury placeholder
                 e.currentTarget.src = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000";
@@ -91,18 +91,16 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
             <div className="space-y-6">
               {/* Detailed narrative */}
               <div>
-                {feature.id !== "pecuaria" && feature.id !== "hidricos" && (
+                {feature.id !== "pecuaria" && (
                   <h4 className="text-[10px] uppercase tracking-widest text-gold font-bold mb-2">
                     {feature.id === "agricola" ? "Estufa Agrícola de Alta Tecnologia (2.200 m²)" : "Visão Geral"}
                   </h4>
                 )}
-                {feature.id !== "hidricos" && (
-                  <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
-                    {feature.id === "pecuaria"
-                      ? "Uma Estrutura zootécnica versátil, pronta para o manejo de diferentes espécies, da produção comercial à vivência rural."
-                      : feature.detailedDesc}
-                  </p>
-                )}
+                <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
+                  {feature.id === "hidricos"
+                    ? "Funcional, robusta e com potencial comercial"
+                    : feature.detailedDesc}
+                </p>
 
                 {feature.id === "sede" && (
                   <div className="mt-8 space-y-8 pt-6 border-t border-white/10">
@@ -113,10 +111,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Sala de estar e jantar independentes, para criar memórias e acolher com conforto.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800"
                           alt="Área Social"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -132,10 +134,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Sete quartos que oferecem privacidade, atendidos por dois banheiros completos.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=800"
                           alt="Acomodações"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -151,10 +157,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Duas varandas charmosas que oferecem o espaço perfeito para relaxar e desfrutar da vista.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1549294413-26f195afcbce?auto=format&fit=crop&q=80&w=800"
                           alt="Contemplação"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -170,10 +180,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Um espaço autêntico e apaixonante equipado com despensa, armários, cooktop, bancadas, fornalha e o tradicional fogão à lenha.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&q=80&w=800"
                           alt="Cozinha de Fazenda"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -217,10 +231,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Gramado excelente e pronto para o lazer de adultos e crianças.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800"
                           alt="Campo de Futebol"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -236,10 +254,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Equipado com forno de pizza, cozinha semi-industrial e bar local estruturado.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800"
                           alt="Espaço Gourmet"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -255,10 +277,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Consumo fresco e a autossuficiência da propriedade, a horta e o pomar garantem alimentos saudáveis, colhidos direto do pé para a mesa todos os dias.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=800"
                           alt="Horta e Pomar Próprios"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -274,10 +300,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Amplo gramado com quiosques, perfeito para eventos ou apenas relaxar nos dias ensolarados.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=800"
                           alt="Gramado com Mesas e Quiosques"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -293,10 +323,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         O refúgio perfeito, ideal para banho de riacho e relaxar ao som da água corrente.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800"
                           alt="Quiosque à Margem do Riacho"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -311,57 +345,92 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                   <div className="mt-8 space-y-8 pt-6 border-t border-white/10">
                     {/* Item 1 */}
                     <div className="space-y-2">
-                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Sistemas Prontos para Eventos</h2>
+                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Nascentes Próprias</h2>
                       <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
-                        Instalações hidráulicas e elétricas dimensionadas para alta demanda, internet e segurança.
+                        Fontes de água pura que nascem dentro da propriedade.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
-                          src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800"
-                          alt="Sistemas Prontos para Eventos"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
+                          src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800"
+                          alt="Nascentes Próprias"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
-                          Espaço para Foto - Sistemas Prontos para Eventos
+                          Espaço para Foto - Nascentes Próprias
                         </div>
                       </div>
                     </div>
 
                     {/* Item 2 */}
                     <div className="space-y-2">
-                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Abastecimento Garantido</h2>
+                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Represa de 450 m²</h2>
                       <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
-                        Poço artesiano outorgado e captação direta em mina d’água protegida.
+                        Espelho d’água imponente, perfeito para pesca, contemplação ou piscicultura.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
-                          src="https://images.unsplash.com/photo-1542044896530-05d85be9b11a?auto=format&fit=crop&q=80&w=800"
-                          alt="Abastecimento Garantido"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
+                          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=800"
+                          alt="Represa de 450 m²"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
-                          Espaço para Foto - Abastecimento Garantido
+                          Espaço para Foto - Represa de 450 m²
                         </div>
                       </div>
                     </div>
 
                     {/* Item 3 */}
                     <div className="space-y-2">
-                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Charme Histórico</h2>
+                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Riacho Natural</h2>
                       <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
-                        Moinho de pedra autêntico e antiga usina hidrelétrica com roda d’água — patrimônio com potencial de restauração.
+                        Curso d’água que corta a propriedade, trazendo lazer e o som da natureza.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
-                          src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=800"
-                          alt="Charme Histórico"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
+                          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=800"
+                          alt="Riacho Natural"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
-                          Espaço para Foto - Charme Histórico
+                          Espaço para Foto - Riacho Natural
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="space-y-2">
+                      <h2 className="text-lg font-serif font-semibold text-white tracking-tight">Abastecimento garantido</h2>
+                      <p className="font-sans text-sm text-gray-300 leading-relaxed font-light">
+                        Poço artesiano outorgado e captação direta em mina d’água protegida.
+                      </p>
+                      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
+                          src="https://images.unsplash.com/photo-1542044896530-05d85be9b11a?auto=format&fit=crop&q=80&w=800"
+                          alt="Abastecimento garantido"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
+                          Espaço para Foto - Abastecimento garantido
                         </div>
                       </div>
                     </div>
@@ -377,10 +446,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Estrutura metálica galvanizada com cortinas em telas móveis frontais e laterais.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800"
                           alt="Estrutura Premium"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -412,10 +485,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Sistema de irrigação totalmente automatizado, com precisão no manejo hídrico.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=800"
                           alt="Automação"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -451,10 +528,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Espaço robusto para manejo seguro, vacinação e trato de bovinos.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&q=80&w=800"
                           alt="Curral"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -470,10 +551,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Instalação protegida para criação e manejo de ovinos e caprinos.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1484557985045-defc319417c6?auto=format&fit=crop&q=80&w=800"
                           alt="Aprisco"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -489,10 +574,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Espaço organizado para cunicultura.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&q=80&w=800"
                           alt="Coelheira"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -508,10 +597,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         10 hectares de pastagem de excelente qualidade, formados em terra fértil e prontos para o manejo de gado de corte, leite ou criação de equinos.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800"
                           alt="Pastagens"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">
@@ -527,10 +620,14 @@ export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenC
                         Estrutura segura para produção de ovos caipiras e aves de corte.
                       </p>
                       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-dark-card group">
-                        <img 
+                        <motion.img 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.7, ease: "easeInOut" }}
                           src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=800"
                           alt="Galinheiro"
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                          className="w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[10px] text-gray-300">

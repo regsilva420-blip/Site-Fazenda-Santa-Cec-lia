@@ -1,16 +1,65 @@
-import React, { useEffect } from "react";
-import { motion } from "motion/react";
-import { ArrowLeft, ArrowRight, Volume2, Shield } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
+import MediaReveal from "./MediaReveal";
 
 interface ForestPageProps {
   onBack: () => void;
 }
 
+// Absolute direct URLs from client's public server
+const media1 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/01-video-01-sec-01.mp4";
+const media2 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/02-video-02-sec-01.mp4";
+const media3 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/03-imagem-03-sec-01.jpg";
+const media4 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/04-imagem-04-sec-01.jpg";
+const media5 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/05-imagem-05-sec-01.jpg";
+const media6 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-01/06-06-imagem-03-sec-01.jpg";
+
+// Programmatic URLs for the Lightbox from 1 to 40
+const galleryImages = Array.from({ length: 40 }, (_, i) => {
+  const index = i + 1;
+  const fileName = `GALERIA (${index}).jpg`;
+  return `https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/galeria-do-site/${encodeURIComponent(fileName)}`;
+});
+
 export default function ForestPage({ onBack }: ForestPageProps) {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
+
+  // Handle keyboard events for lightbox navigation
+  useEffect(() => {
+    if (!isGalleryOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsGalleryOpen(false);
+      } else if (e.key === "ArrowRight") {
+        setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+      } else if (e.key === "ArrowLeft") {
+        setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isGalleryOpen]);
+
+  // Lock body scroll of the app when lightbox is active
+  useEffect(() => {
+    if (isGalleryOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isGalleryOpen]);
 
   return (
     <div className="min-h-screen bg-[#070808] text-white font-sans antialiased relative selection:bg-gold selection:text-dark">
@@ -58,20 +107,8 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </motion.p>
         </section>
 
-        {/* 1. Main Immersive Upward Facing Trees Cover Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full h-[50vh] md:h-[60vh] rounded-none overflow-hidden relative"
-        >
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY30spNZiLlmScVAJw6ZkSysxAxxGNa8OmlBUIITk_0-vhk6VgpNCe2SZ-c0hSMZOXwLRZFCkTT7WR61q7pkEVXr5NKM8bYan16EgGyWcHOhR7MqWEiBVp8gAWg1EZptH-cqcChRuBBWLFv8HjXstJ3CYuaJrTs1miixtz0O4phhQeyItWIe9ueA-_vsU6k0cwiyTj28-F9kA2p2UPy17hP_FGqSMXN4_cY5sqodU4rZ0tfS5f-yQxGc8RVSqq6B1lsplg1rYncLLQk7o"
-            alt="Copas das árvores da floresta"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </motion.div>
+        {/* 1. Main Immersive Upward Facing Trees Cover Image (Video) */}
+        <MediaReveal type="video" src={media1} alt="Copas das árvores da floresta" />
 
         {/* Dynamic elegant back button block aligned centered */}
         <div className="flex flex-col items-center py-6">
@@ -96,16 +133,9 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </p>
         </section>
 
-        {/* Subsection 02: Fauna Refúgio (Image + content) */}
+        {/* Subsection 02: Fauna Refúgio (Video + content) */}
         <section className="space-y-6 pt-10 border-t border-white/5">
-          <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative">
-            <img
-              src="https://images.unsplash.com/photo-1552728089-57bdde30ebd3?auto=format&fit=crop&q=80&w=1200"
-              alt="Fauna exótica Mata Atlântica"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          </div>
+          <MediaReveal type="video" src={media2} alt="Aves e fauna silvestre" />
           
           <div className="space-y-3">
             <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug">
@@ -119,14 +149,7 @@ export default function ForestPage({ onBack }: ForestPageProps) {
 
         {/* Subsection 03: Trilhas e ecoturismo (Image + content) */}
         <section className="space-y-6 pt-10 border-t border-white/5">
-          <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative">
-            <img
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200"
-              alt="Trilhas e caminhos na mata"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          </div>
+          <MediaReveal type="image" src={media3} alt="Trilhas e caminhos na mata" />
 
           <div className="space-y-3">
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
@@ -137,14 +160,7 @@ export default function ForestPage({ onBack }: ForestPageProps) {
 
         {/* Subsection 04: Crédito de Carbono (Image + content) */}
         <section className="space-y-6 pt-10 border-t border-white/5">
-          <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative">
-            <img
-              src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=1200"
-              alt="Folhas verdes tropicais"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          </div>
+          <MediaReveal type="image" src={media4} alt="Folhas verdes tropicais" />
 
           <div className="space-y-3">
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl" id="aves-p">
@@ -152,13 +168,8 @@ export default function ForestPage({ onBack }: ForestPageProps) {
             </p>
 
             {/* Espaço para imagem */}
-            <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative my-6" id="abelhas-img-space">
-              <img
-                src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=1200"
-                alt="Abelha polinizadora em flor nativa"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="my-6" id="abelhas-img-space">
+              <MediaReveal type="image" src={media5} alt="Abelha polinizadora em flor nativa" />
             </div>
 
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl" id="abelhas-p">
@@ -166,13 +177,8 @@ export default function ForestPage({ onBack }: ForestPageProps) {
             </p>
 
             {/* Espaço para imagem de pesquisa */}
-            <div className="w-full h-[30vh] md:h-[45vh] overflow-hidden relative my-6" id="pesquisa-img-space">
-              <img
-                src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200"
-                alt="Estudos e pesquisa na floresta"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="my-6" id="pesquisa-img-space">
+              <MediaReveal type="image" src={media6} alt="Estudos e pesquisa na floresta" />
             </div>
 
             <h2 className="font-serif text-2xl md:text-3.5xl font-semibold text-white tracking-tight leading-snug pt-2" id="pesquisa-h2">
@@ -183,6 +189,50 @@ export default function ForestPage({ onBack }: ForestPageProps) {
             </p>
           </div>
         </section>
+
+        {/* Gallery Grid Section */}
+        <div className="py-16 border-t border-white/5 space-y-6" id="galeria-fotos">
+          <div className="flex flex-col items-center space-y-2 mb-8">
+            <span className="font-mono text-[10px] tracking-widest uppercase text-gold/60">
+              Registro Fotográfico
+            </span>
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-white tracking-tight text-center">
+              Galeria da Floresta
+            </h2>
+            <p className="text-xs text-gray-400 font-light max-w-sm text-center">
+              Explore o acervo completo de fotografias da área de conservação. Clique em qualquer imagem para abrir a visualização em tela cheia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 max-w-6xl mx-auto px-4">
+            {galleryImages.map((imgUrl, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setIsGalleryOpen(true);
+                }}
+                className="aspect-square relative overflow-hidden bg-white/5 border border-white/5 cursor-pointer group"
+                id={`galeria-item-${index}`}
+              >
+                <img
+                  src={imgUrl}
+                  alt={`Foto da Galeria ${index + 1}`}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-110"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-gold bg-black/85 px-3 py-1.5 border border-gold/20">
+                    Ver Foto
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
         {/* Bottom footer back block */}
         <div className="flex flex-col items-center pt-16 border-t border-white/5">
@@ -197,6 +247,94 @@ export default function ForestPage({ onBack }: ForestPageProps) {
           </motion.button>
         </div>
       </main>
+
+      {/* Lightbox Photo Gallery Modal */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between select-none"
+          >
+            {/* Header with tools */}
+            <div className="absolute top-0 inset-x-0 p-6 flex items-center justify-between z-10 bg-gradient-to-b from-black/80 to-transparent">
+              <span className="font-mono text-xs text-gray-400">
+                {currentImageIndex + 1} / {galleryImages.length}
+              </span>
+              <button
+                onClick={() => setIsGalleryOpen(false)}
+                className="p-3 text-gray-400 hover:text-white transition-colors cursor-pointer rounded-full hover:bg-white/10"
+                aria-label="Fechar galeria"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Main Stage with Image & Navigation */}
+            <div className="flex-1 flex items-center justify-between px-4 md:px-12 relative">
+              {/* Left Navigation Arrow */}
+              <button
+                onClick={() =>
+                  setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+                }
+                className="absolute left-4 md:left-8 z-10 p-3 md:p-4 text-gray-400 hover:text-white hover:bg-white/15 transition-colors cursor-pointer rounded-full bg-black/20"
+                aria-label="Imagem anterior"
+              >
+                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+              </button>
+
+              {/* Main Image Stage */}
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <motion.img
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  src={galleryImages[currentImageIndex]}
+                  alt={`Imagem da galeria ${currentImageIndex + 1}`}
+                  className="max-w-full max-h-[80vh] md:max-h-[82vh] object-contain select-none"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              {/* Right Navigation Arrow */}
+              <button
+                onClick={() =>
+                  setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
+                }
+                className="absolute right-4 md:right-8 z-10 p-3 md:p-4 text-gray-400 hover:text-white hover:bg-white/15 transition-colors cursor-pointer rounded-full bg-black/20"
+                aria-label="Próxima imagem"
+              >
+                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+              </button>
+            </div>
+
+            {/* Footer containing Thumbnails navigation on desktop */}
+            <div className="hidden md:flex justify-start md:justify-center gap-2 p-6 overflow-x-auto bg-gradient-to-t from-black/80 to-transparent max-w-full scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+              {galleryImages.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`w-12 h-12 flex-shrink-0 transition-all duration-300 rounded overflow-hidden border-2 ${
+                    currentImageIndex === idx ? "border-gold scale-105" : "border-transparent opacity-40 hover:opacity-100"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt={`Miniatura ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+

@@ -40,7 +40,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Área da Propriedade",
     title: "Informações do Terreno",
     subtitle: "",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLukWba-4xA1TwChX8JnfslRAIq5uJm8e1l4Vev3hiAdenBsSpjDa610fMFQPEJFy4x9yS6ZpLqYK4f6xPYBQjzbWyoxvBV0gHE3qaVsXoMiRnSdZAs_x3cdyzM-Bo_wuETPe3d6DlEvdLVx2Zx7_b7hf_08BFwvTmPsnkVEMk5SrtsUyKlVo7u7n6mwCKvqq6tZ4WiHj96yIjSCDCqmuwt-wsxAWufM6nNt3HvwCz8OA4OJLu4yQ39HiGHl",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-02/02-MAPA.jpeg",
     shortDesc: "Localização estratégica em Patrocínio Paulista, com topografia propícia e solo de alta fertilidade.",
     detailedDesc: "Com uma área total de 63 hectares disponíveis para venda, a fazenda se destaca pelo equilíbrio entre conservação ecológica, lazer e áreas produtivas prontas para gerar receita. Toda a propriedade está em estrita conformidade com a legislação ambiental vigente, garantindo uma transação jurídica segura e sem pendências.",
     metrics: [
@@ -61,7 +61,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Funcionalidade e Tradição",
     title: "Casa Sede",
     subtitle: "Residência histórica preservada.",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLtNBCo6JGPJ7gbuWrwOGvUH-1dNVHjoxEt2Svg01qa_No8fRAMquotAD0HD5hRo44QTM_0lIBZx7fenS5hs-wYOCqM_F73iJ7StCz4E-ujQ1QvBzsHyryUcbVhW25AFWaLlj4Y-Al4PyEpm94h-qCWe9S-BzgSR3YoaIh8o8R0Q4d__w34Jycr1AKrpqOpz_e4VUrmA6SQrkB3NSFshADxC2KuI2iWhhIIbvrzIw1Rl9Ljdiq5LQ9uZOV4X",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-03/03_MIDIA01%20(1).jpeg",
     shortDesc: "Mansão de campo maravilhosa com living panorâmico, design de interiores impecável e 7 quartos espaçosos.",
     detailedDesc: "Fundada em 1930 e reformada entre 2020 e 2021, a residência mantém sua arquitetura tradicional preservada, combinando o charme das grandes propriedades históricas com o conforto e funcionalidade das atualizações modernas.",
     metrics: [
@@ -82,7 +82,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Infraestrutura",
     title: "Lazer e Convivência",
     subtitle: "O Cenário Perfeito.",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLszlM6uVXJhZ9h6EpUW8WYKZuc41r8fe4eTJOgxOmGPreh1CNM5FCO_VmTpqTkgFTL3g6-MjtBZlXKtAJWTbO7Khu06VCgMfE4Anx9uE_kNVgtTQLD7w-Bp4AR9-lb6B0tWv2De2koKOPwfnoqxU_7eqofoNW9KzcWizimX9Uf8a9dAHbJmkSg2jW_5gsGJEp1LFZjA3Bp9H4_hXSk99lMlZJPMwCsCvRM4rsnv3kLplMuTNVEIiaY0auU",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-04/04-capa.jpg",
     shortDesc: "Piscina aquecida de borda infinita, quadra de tênis oficial, sauna e spa integrados do mais alto padrão.",
     detailedDesc: "A fazenda oferece uma infraestrutura de lazer completa e perfeitamente integrada à natureza, projetada tanto para o descanso em família quanto para sediar grandes eventos e recepções.",
     metrics: [
@@ -102,7 +102,7 @@ export const FeaturesData: FeatureCard[] = [
     id: "hidricos",
     category: "Riqueza e Autossuficiência",
     title: "Recursos Hídricos",
-    subtitle: "Funcional, robusta e com potencial comercial",
+    subtitle: "Riqueza de águas puras com nascentes, represa e riacho.",
     image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&q=80&w=1200", // GORGEOUS water stream / waterfall in forest.
     shortDesc: "Três nascentes intocadas, cachoeira interna deslumbrante, ribeirão limpo e represas próprias.",
     detailedDesc: "Um dos maiores tesouros da fazenda é sua impressionante abundância em recursos hídricos naturais — segurança hídrica estratégica e enorme potencial para lazer, paisagismo e atividades agroecológicas.",

@@ -11,9 +11,19 @@ import InvestmentCalculator from "./components/InvestmentCalculator";
 import ContactForm from "./components/ContactForm";
 import ConciergeChat from "./components/ConciergeChat";
 import ForestPage from "./components/ForestPage";
+import PropertyAreaPage from "./components/PropertyAreaPage";
+import CasaSedePage from "./components/CasaSedePage";
+import AreaLazerPage from "./components/AreaLazerPage";
+import RecursosHidricosPage from "./components/RecursosHidricosPage";
+import ProducaoAgricolaPage from "./components/ProducaoAgricolaPage";
 
 export default function App() {
   const [viewingForest, setViewingForest] = useState(false);
+  const [viewingPropertyArea, setViewingPropertyArea] = useState(false);
+  const [viewingCasaSede, setViewingCasaSede] = useState(false);
+  const [viewingAreaLazer, setViewingAreaLazer] = useState(false);
+  const [viewingRecursosHidricos, setViewingRecursosHidricos] = useState(false);
+  const [viewingProducaoAgricola, setViewingProducaoAgricola] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -34,6 +44,16 @@ export default function App() {
     if (found) {
       if (id === "floresta") {
         setViewingForest(true);
+      } else if (id === "terreno") {
+        setViewingPropertyArea(true);
+      } else if (id === "sede") {
+        setViewingCasaSede(true);
+      } else if (id === "lazer") {
+        setViewingAreaLazer(true);
+      } else if (id === "hidricos") {
+        setViewingRecursosHidricos(true);
+      } else if (id === "agricola") {
+        setViewingProducaoAgricola(true);
       } else {
         setSelectedFeature(found);
       }
@@ -70,6 +90,51 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <ForestPage onBack={() => setViewingForest(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingPropertyArea) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <PropertyAreaPage onBack={() => setViewingPropertyArea(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingCasaSede) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <CasaSedePage onBack={() => setViewingCasaSede(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingAreaLazer) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <AreaLazerPage onBack={() => setViewingAreaLazer(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingRecursosHidricos) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <RecursosHidricosPage onBack={() => setViewingRecursosHidricos(false)} />
+        <ConciergeChat />
+      </div>
+    );
+  }
+
+  if (viewingProducaoAgricola) {
+    return (
+      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
+        <ProducaoAgricolaPage onBack={() => setViewingProducaoAgricola(false)} />
         <ConciergeChat />
       </div>
     );
@@ -207,7 +272,7 @@ export default function App() {
           poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1500"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://quzsjtcvkdzmhzvosunn.supabase.co/storage/v1/object/public/midias-site//hero.mp4" type="video/mp4" />
+          <source src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/hero-video/hero.mp4" type="video/mp4" />
         </video>
         
         {/* Dark luxury gradient overlay cover */}
@@ -272,11 +337,23 @@ export default function App() {
             className="relative h-[30vh] lg:h-[45vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
           >
             {/* Background image covering 100% */}
-            {feature.id !== "lazer" && feature.id !== "hidricos" && feature.id !== "agricola" && (
+            {feature.id === "lazer" ? (
+              <img 
+                src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-04/04-capa.jpg" 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
+              />
+            ) : feature.id === "hidricos" ? (
+              <img 
+                src="https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-05/capa-sec-05.jpg" 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
+              />
+            ) : (
               <img 
                 src={feature.image} 
                 alt={feature.title} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-102"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000";
                 }}
