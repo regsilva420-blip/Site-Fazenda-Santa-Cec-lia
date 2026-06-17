@@ -11,8 +11,8 @@ interface CasaSedePageProps {
 const img1 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/01-imagem_sec-03.jpg";
 const img2 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/02-imagem_sec-03.jpg";
 const img3 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/03-imagem_sec-03.jpg";
-const img4 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/05-imagem_sec-03.jpg";
-const img5 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/04-imagem_sec-03.jpg";
+const img4 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/04-imagem_sec-03.jpg";
+const img5 = "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/saiba-mais-sec-03/05-imagem_sec-03.jpg";
 
 export default function CasaSedePage({ onBack }: CasaSedePageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

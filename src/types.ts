@@ -19,7 +19,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Meio Ambiente",
     title: "Reserva de Biodiversidade",
     subtitle: "63 Hectares preservados na Mata Atlântica",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBY30spNZiLlmScVAJw6ZkSysxAxxGNa8OmlBUIITk_0-vhk6VgpNCe2SZ-c0hSMZOXwLRZFCkTT7WR61q7pkEVXr5NKM8bYan16EgGyWcHOhR7MqWEiBVp8gAWg1EZptH-cqcChRuBBWLFv8HjXstJ3CYuaJrTs1miixtz0O4phhQeyItWIe9ueA-_vsU6k0cwiyTj28-F9kA2p2UPy17hP_FGqSMXN4_cY5sqodU4rZ0tfS5f-yQxGc8RVSqq6B1lsplg1rYncLLQk7o",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec01/capa_sec_01-2.jpg",
     shortDesc: "Reserva de Mata Atlântica com trilhas, rica biodiversidade e ar puro, propícia para crédito de carbono e ecoturismo.",
     detailedDesc: "A Fazenda Santa Cecília ostenta uma exuberante floresta nativa preservada pertencente ao bioma da Mata Atlântica brasileira. Com trilhas ecológicas desenhadas de forma sustentável, a propriedade é um refúgio natural absoluto de biodiversidade. Além do indescritível valor estético e bem-estar, a área está em plena conformidade com o Código Florestal brasileiro, oferecendo um gigantesco potencial de exploração para créditos de carbono corporativos ou fomento de turismo de experiência ecológica de alto padrão (Glamping).",
     metrics: [
@@ -103,7 +103,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Riqueza e Autossuficiência",
     title: "Recursos Hídricos",
     subtitle: "Riqueza de águas puras com nascentes, represa e riacho.",
-    image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&q=80&w=1200", // GORGEOUS water stream / waterfall in forest.
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-05/capa-sec-05.jpg", // GORGEOUS water stream / waterfall in forest.
     shortDesc: "Três nascentes intocadas, cachoeira interna deslumbrante, ribeirão limpo e represas próprias.",
     detailedDesc: "Um dos maiores tesouros da fazenda é sua impressionante abundância em recursos hídricos naturais — segurança hídrica estratégica e enorme potencial para lazer, paisagismo e atividades agroecológicas.",
     metrics: [
@@ -124,7 +124,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Alta Tecnologia e Versatilidade",
     title: "Produção Agrícola",
     subtitle: "Estufa com irrigação automatizada de alta produtividade",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLsDu_SSnf5Ldjfitsrg12F562FuszjJrONjFVC-y2Kv2HRuD3EXlKs6teZdexosfrT6fVJnUVToXlfe-NNj7AGZcLj0j_vxppVdOzyNCDQ34_17juJliElxPsdE47p8p2dG4sgyUHEHmbuBEPqdCMb5WgnX5UwnE-4Qw0jftzdelYhT_mxyToc4H7QWVrnx69r8ti5Hhc5G1mvlxjyzd8pbvnthsFtHY1wfmkg5ccGg4XVquwyEryj95Vfq",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-06/capa-sec-06.jpg",
     shortDesc: "Estrutura hidropônica automatizada pronta para cultivo de hortifrúti de valor agregado ou mudas especiais.",
     detailedDesc: "Estufa profissional de última geração, com engenharia de precisão para máxima produtividade e controle climático em todas as estações.",
     metrics: [
@@ -187,7 +187,7 @@ export const FeaturesData: FeatureCard[] = [
     category: "Frota Completa",
     title: "Maquinários e Equipamentos",
     subtitle: "Galpão industrial equipado e tratores John Deere",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLs-gsLklOcdnhESby3mqamw8taDNeO89RlvuUfCfsZYrFFHWmC5hJH6AaYV4yzXCRNhzQk2wpJM85KofIPlKRYqZHYjEGWY0n7b7J1rQseRO3EkTauszs95VXLI8CdVtodhDQQvjQ91UnGjvJHPM1Hf_i1n4rFqlgK5NBTTtaW8bxx8NSPDKNHi-qaNYtTBbQGFAkpMz6EYBv2n2SYyba4tAn4A0sUp7kD9TMLCi6tDMUFmIcS46gYF6pR9",
+    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-09/capa-sec-09.jpg",
     shortDesc: "Oficina montada profissional, frota operacional robusta e rede elétrica trifásica com gerador automático.",
     detailedDesc: "Segurança de operação contínua de ponta a ponta. O setor de apoio logístico apresenta um galpão maciço em vigas metálicas galvanizadas e cobertura acústica para proteção das máquinas. A fazenda é entregue com trator John Deere traçado de excelente potência e implementos operacionais. Conta com gerador a diesel automático capaz de manter o bombeamento, a estufa e as ordenhadeiras ativas de forma autônoma em caso de interrupção na rede elétrica trifásica de alta tensão.",
     metrics: [

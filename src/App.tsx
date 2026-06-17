@@ -8,7 +8,6 @@ import { FeaturesData, FeatureCard } from "./types";
 import FeatureModal from "./components/FeatureModal";
 import InteractiveMap from "./components/InteractiveMap";
 import InvestmentCalculator from "./components/InvestmentCalculator";
-import ContactForm from "./components/ContactForm";
 import ConciergeChat from "./components/ConciergeChat";
 import ForestPage from "./components/ForestPage";
 import PropertyAreaPage from "./components/PropertyAreaPage";
@@ -318,40 +317,49 @@ export default function App() {
 
                 <div className="space-y-3 flex flex-col">
                   {[
-                    { label: "Visão Geral & Recursos", id: "detalhes" },
-                    { label: "Estufa de Tecnologia", id: "detalhes", subId: "agricola" },
-                    { label: "Casa Sede & Lazer", id: "detalhes", subId: "sede" },
-                    { label: "Recursos Hídricos", id: "detalhes", subId: "hidricos" },
-                    { label: "Agendar Visita Físico", id: "agendar-visita" }
+                    { label: "Reserva de Biodiversidade", id: "secao-01" },
+                    { label: "Informações do Terreno", id: "secao-02" },
+                    { label: "Casa Sede", id: "secao-03" },
+                    { label: "Lazer e Convivência", id: "secao-04" },
+                    { label: "Recursos Hídricos", id: "secao-05" },
+                    { label: "Produção Agrícola", id: "secao-06" },
+                    { label: "Pecuária", id: "secao-07" },
+                    { label: "Infraestrutura", id: "secao-08" },
+                    { label: "Maquinários e Equipamentos", id: "secao-09" }
                   ].map((item, idx) => (
-                    <button
+                    <a
                       key={idx}
-                      onClick={() => {
-                        scrollToSection(item.id);
-                        if (item.subId) {
-                          setTimeout(() => handleLearnMore(item.subId!), 400);
+                      href={`/#${item.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsMenuOpen(false);
+                        const el = document.getElementById(item.id);
+                        if (el) {
+                          el.scrollIntoView({ behavior: "smooth", block: "center" });
                         }
+                        window.location.hash = item.id;
                       }}
-                      className="w-full text-left px-3 py-2 rounded text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer font-light flex items-center justify-between"
+                      className="w-full text-left px-3 py-2 rounded text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer font-light flex items-center justify-between group/item"
                     >
-                      {item.label}
+                      <span className="group-hover/item:text-gold transition-all">{item.label}</span>
                       <span className="text-[10px] text-gold font-mono">&rarr;</span>
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>
 
               {/* Bottom sales broker support information card */}
               <div className="p-4 rounded bg-white/5 border border-white/5 space-y-2">
-                <p className="text-[9px] uppercase tracking-widest text-[#777] font-bold">ASSESSORIA DIRECTA</p>
-                <p className="text-xs text-white font-medium flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
-                  +55 (16) 99842-1200
-                </p>
-                <p className="text-[10px] text-gray-400 font-light font-mono flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-gold shrink-0" />
-                  vendas@santaseciliaserrana.com.br
-                </p>
+                <p className="text-[9px] uppercase tracking-widest text-[#777] font-bold">ASSESSORIA DIRETA</p>
+                <a 
+                  href="https://wa.me/5511994053670?text=Olá,%20Jez%20Bernardinelli!%20Gostaria%20de%20obter%20mais%20informações%20sobre%20a%20Fazenda%20Santa%20Cecília."
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xs text-white hover:text-gold font-medium flex items-center gap-1.5 transition-colors cursor-pointer group/wa"
+                >
+                  <Phone className="w-3.5 h-3.5 text-gold shrink-0 transition-transform group-hover/wa:scale-110" />
+                  +55 11 99405-3670
+                </a>
               </div>
             </motion.div>
           </>
@@ -512,26 +520,16 @@ export default function App() {
         ))}
       </section>
 
-      {/* 7. Contact Consultation Dock */}
-      <section id="agendar-visita" className="py-16 md:py-24 px-6 bg-gradient-to-b from-[#0c0d0d] to-[#0a0b0b] border-t border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <ContactForm initialSubject={contactSubject} />
-        </div>
-      </section>
-
       {/* 8. Footer */}
-      <footer className="py-16 px-6 text-center bg-[#070808] border-t border-white/5">
+      <footer id="agendar-visita" className="py-16 px-6 text-center bg-[#070808] border-t border-white/5">
         <div className="max-w-4xl mx-auto space-y-4">
           <h2 className="font-serif text-3xl italic text-gray-300 tracking-wide">
             Fazenda Santa Cecília
           </h2>
           <p className="text-[10px] uppercase tracking-[0.25em] text-gold font-bold">
-            Região Serrana • São Paulo, Brasil
+            PATROCÍNIO PAULISTA - SP
           </p>
           <div className="h-px bg-white/5 w-16 mx-auto" />
-          <p className="text-xs text-gray-500 font-light max-w-sm mx-auto leading-relaxed">
-            Uma joia exclusiva do agronegócio e lazer do interior do estado. Documentações 100% em perfeita ordem jurídica.
-          </p>
           <p className="text-[9px] text-gray-600 font-mono pt-6">
             © {new Date().getFullYear()} Fazenda Santa Cecília. Todos os direitos reservados.
           </p>

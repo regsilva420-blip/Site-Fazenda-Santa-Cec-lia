@@ -65,9 +65,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
         <div className="text-xs font-semibold uppercase tracking-widest text-gold/60 font-mono">
           &rarr; Lazer e Convivência
         </div>
-      </header>
-
-      {/* Main Container Content */}
+      </header>      {/* Main Container Content */}
       <main className="max-w-4xl mx-auto px-6 md:px-12 pb-24 space-y-20">
         
         {/* Bloco 1 - VÍDEO */}
@@ -87,7 +85,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-sm md:text-base text-gray-300 font-light leading-relaxed"
             >
-              Um verdadeiro oásis verde, planejado detalhadamente para proporcionar momentos inesquecíveis para toda a família e amigos.
+              A fazenda oferece uma infraestrutura de lazer completa e perfeitamente integrada à natureza, projetada tanto para o descanso em família quanto para sediar grandes eventos e recepções.
             </motion.p>
           </div>
           <motion.div
@@ -115,7 +113,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
               Campo de Futebol
             </h2>
             <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Gramado excelente, mantido para o lazer de adultos e crianças.
+              Gramado excelente e pronto para o lazer de adultos e crianças.
             </p>
           </div>
           <motion.div
@@ -143,7 +141,7 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
               Espaço Gourmet
             </h2>
             <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Equipado com forno de pizza, cozinha semi-industrial e churrasqueira.
+              Equipado com forno de pizza, cozinha semi-industrial e bar local estruturado.
             </p>
           </div>
           <motion.div
@@ -167,10 +165,10 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
         <section className="space-y-6 pt-6 border-t border-white/5">
           <div className="space-y-3">
             <h2 className="font-serif text-2xl md:text-3xl font-semibold text-white tracking-tight">
-              Horta e Pomar Orgânico
+              Horta e Pomar Próprios
             </h2>
             <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Cultive o frescor na sua casa! Horta já em plena produção e pomar com diversas árvores frutíferas adultas, colhidas direto do pé para a mesa todos os dias.
+              Consumo fresco e a autossuficiência da propriedade, a horta e o pomar garantem alimentos saudáveis, colhidos direto do pé para a mesa todos os dias.
             </p>
           </div>
           <motion.div
@@ -194,10 +192,10 @@ export default function AreaLazerPage({ onBack }: AreaLazerPageProps) {
         <section className="space-y-6 pt-6 border-t border-white/5">
           <div className="space-y-3">
             <h2 className="font-serif text-2xl md:text-3xl font-semibold text-white tracking-tight">
-              Quiosque com redário e deck ao ar livre
+              Gramado com mesas e quiosques
             </h2>
             <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Instalação rústica em quiosque, perfeito para meditação, apoiar as redes e descanso dos moradores.
+              Amplo gramado com quiosques, perfeito para eventos ou apenas relaxar nos dias ensolarados.
             </p>
           </div>
           <motion.div

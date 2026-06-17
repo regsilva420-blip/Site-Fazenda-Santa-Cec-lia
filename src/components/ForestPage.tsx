@@ -150,7 +150,7 @@ export default function ForestPage({ onBack }: ForestPageProps) {
               Fauna e Flora
             </h2>
             <p className="text-sm md:text-base text-gray-400 font-light leading-relaxed max-w-2xl">
-              Com mais de 170 espécies de plantas registradas, a reserva possui árvores centenárias e ameaçadas e raras, como o jequitibá-rosa, a palmeira-juçara  e a peroba-rosa.
+              Com mais de 170 espécies de plantas registradas, a reserva possui árvores centenárias, ameaçadas e raras, como o jequitibá-rosa, a palmeira-juçara  e a peroba-rosa.
             </p>
           </div>
         </section>
