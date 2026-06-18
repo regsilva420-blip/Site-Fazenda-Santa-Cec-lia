@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Menu, X, Sparkles, MapPin, Droplets, Compass, ArrowDown, Map, 
-  Landmark, Phone, Users, Shield, BookOpen, Volume2, VolumeX, Mail
+  Landmark, Phone, Users, Shield, BookOpen, Volume2, VolumeX, Mail,
+  MessageCircle
 } from "lucide-react";
 import { FeaturesData, FeatureCard } from "./types";
 import FeatureModal from "./components/FeatureModal";
@@ -34,6 +35,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [conciergeTopic, setConciergeTopic] = useState<string | null>(null);
   const [contactSubject, setContactSubject] = useState<string>("Geral - Fazenda Santa Cecília");
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // Handle transparent to dark header blur on scroll
   useEffect(() => {
@@ -349,17 +351,49 @@ export default function App() {
               </div>
 
               {/* Bottom sales broker support information card */}
-              <div className="p-4 rounded bg-white/5 border border-white/5 space-y-2">
+              <div className="p-4 rounded bg-white/5 border border-white/5 space-y-3">
                 <p className="text-[9px] uppercase tracking-widest text-[#777] font-bold">ASSESSORIA DIRETA</p>
-                <a 
-                  href="https://wa.me/5511994053670?text=Olá,%20Jez%20Bernardinelli!%20Gostaria%20de%20obter%20mais%20informações%20sobre%20a%20Fazenda%20Santa%20Cecília."
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-white hover:text-gold font-medium flex items-center gap-1.5 transition-colors cursor-pointer group/wa"
-                >
-                  <Phone className="w-3.5 h-3.5 text-gold shrink-0 transition-transform group-hover/wa:scale-110" />
-                  +55 11 99405-3670
-                </a>
+                <div className="space-y-2.5">
+                  <a 
+                    href="https://wa.me/5511994053670?text=Ol%C3%A1%21%20Acessei%20o%20site%20da%20Fazenda%20Santa%20Cec%C3%ADlia%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-left py-1 group/contact hover:opacity-95 transition-opacity"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-3.5 h-3.5 text-gold shrink-0 transition-transform group-hover/contact:scale-110" />
+                      <div>
+                        <p className="text-[11px] font-semibold text-white/95 group-hover/contact:text-gold transition-colors">
+                          Cristiane Lopes Kaulich
+                        </p>
+                        <p className="text-[9px] text-[#888] font-serif italic leading-none mt-0.5">
+                          Proprietária
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <div className="h-px bg-white/5 w-full" />
+
+                  <a 
+                    href="https://wa.me/5516982521234?text=Ol%C3%A1%21%20Acessei%20o%20site%20da%20Fazenda%20Santa%20Cec%C3%ADlia%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-left py-1 group/contact hover:opacity-95 transition-opacity"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-3.5 h-3.5 text-gold shrink-0 transition-transform group-hover/contact:scale-110" />
+                      <div>
+                        <p className="text-[11px] font-semibold text-white/95 group-hover/contact:text-gold transition-colors">
+                          Jez Bernardinelli
+                        </p>
+                        <p className="text-[9px] text-[#888] font-serif italic leading-none mt-0.5">
+                          Corretor
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
             </motion.div>
           </>
@@ -522,13 +556,23 @@ export default function App() {
 
       {/* 8. Footer */}
       <footer id="agendar-visita" className="py-16 px-6 text-center bg-[#070808] border-t border-white/5">
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="font-serif text-3xl italic text-gray-300 tracking-wide">
             Fazenda Santa Cecília
           </h2>
           <p className="text-[10px] uppercase tracking-[0.25em] text-gold font-bold">
             PATROCÍNIO PAULISTA - SP
           </p>
+
+          <div className="pt-4 pb-2">
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="inline-flex px-8 py-3.5 bg-gold hover:bg-gold/85 text-dark text-[10px] uppercase tracking-[0.25em] font-bold transition-all duration-300 font-sans shadow-lg hover:shadow-gold/10 cursor-pointer"
+            >
+              Entrar em Contato
+            </button>
+          </div>
+
           <div className="h-px bg-white/5 w-16 mx-auto" />
           <p className="text-[9px] text-gray-600 font-mono pt-6">
             © {new Date().getFullYear()} Fazenda Santa Cecília. Todos os direitos reservados.
@@ -538,6 +582,84 @@ export default function App() {
 
       {/* Floating virtual AI Concierge helper */}
       <ConciergeChat />
+
+      {/* Contact Selection Modal */}
+      <AnimatePresence>
+        {isContactModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+            onClick={() => setIsContactModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 15 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 15 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative w-full max-w-md p-8 md:p-10 bg-[#0f1111] border border-white/10 shadow-2xl rounded-none text-center space-y-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsContactModalOpen(false)}
+                className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 cursor-pointer"
+                aria-label="Fechar"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="space-y-2">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-gold font-bold">
+                  Contato Direto
+                </span>
+                <h3 className="font-serif text-2xl italic text-gray-300">
+                  Escolha com quem deseja falar:
+                </h3>
+              </div>
+
+              <div className="space-y-4 pt-2">
+                {/* Button 1 */}
+                <a
+                  href="https://wa.me/5511994053670?text=Ol%C3%A1%21%20Acessei%20o%20site%20da%20Fazenda%20Santa%20Cec%C3%ADlia%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold/30 transition-all duration-300 text-left group cursor-pointer"
+                >
+                  <div>
+                    <p className="font-sans text-xs text-gray-400 uppercase tracking-widest font-semibold group-hover:text-gold transition-colors duration-300">
+                      Cristiane Lopes Kaulich
+                    </p>
+                    <p className="font-serif italic text-sm text-gray-500">
+                      Proprietária
+                    </p>
+                  </div>
+                  <MessageCircle className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-300" />
+                </a>
+
+                {/* Button 2 */}
+                <a
+                  href="https://wa.me/5516982521234?text=Ol%C3%A1%21%20Acessei%20o%20site%20da%20Fazenda%20Santa%20Cec%C3%ADlia%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold/30 transition-all duration-300 text-left group cursor-pointer"
+                >
+                  <div>
+                    <p className="font-sans text-xs text-gray-400 uppercase tracking-widest font-semibold group-hover:text-gold transition-colors duration-300">
+                      Jez Bernardinelli
+                    </p>
+                    <p className="font-serif italic text-sm text-gray-500">
+                      Corretor
+                    </p>
+                  </div>
+                  <MessageCircle className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-300" />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Render detailed pop Details Modal block */}
       <AnimatePresence>
