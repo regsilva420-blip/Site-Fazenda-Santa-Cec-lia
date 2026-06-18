@@ -433,7 +433,7 @@ export default function App() {
       </section>
 
       {/* 3. ESTRUTURA DAS SEÇÕES (Cards Panorâmicos Edge-to-Edge) */}
-      <section className="w-full px-0 mx-0 flex flex-col gap-1 bg-[#0f1111] overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-1 bg-black overflow-hidden">
         {FeaturesData.map((feature) => (
           <motion.article 
             key={feature.id}
@@ -449,7 +449,7 @@ export default function App() {
               feature.id === "maquinario" ? "secao-09" : undefined
             }
             onClick={() => handleLearnMore(feature.id)}
-            className="relative h-[30vh] lg:h-[45vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
+            className="relative h-[35vh] md:h-[45vh] lg:h-[55vh] min-h-[250px] w-full overflow-hidden group cursor-pointer bg-dark"
           >
             {/* Background image covering 100% */}
             {feature.id === "lazer" ? (
@@ -518,7 +518,7 @@ export default function App() {
             </div>
           </motion.article>
         ))}
-      </section>
+      </div>
 
       {/* 8. Footer */}
       <footer id="agendar-visita" className="py-16 px-6 text-center bg-[#070808] border-t border-white/5">
