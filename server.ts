@@ -128,20 +128,26 @@ app.post("/api/chat", async (req: Request, res: Response): Promise<void> => {
     // If chat structure is needed, we can pass formatted history
     const formattedContents: any[] = [];
 
-    // System instructions passed in config
-    const config = {
-      systemInstruction: FAZENDA_KNOWLEDGE,
-      temperature: 0.7,
-    };
+    // System instructions passed in config (defaults to FAZENDA_KNOWLEDGE)
+    let systemInstructionInput = FAZENDA_KNOWLEDGE;
 
     if (history && Array.isArray(history)) {
       history.forEach((msg: any) => {
-        formattedContents.push({
-          role: msg.role === "user" ? "user" : "model",
-          parts: [{ text: msg.text || msg.content || "" }],
-        });
+        if (msg.role === "system") {
+          systemInstructionInput = msg.text || msg.content || systemInstructionInput;
+        } else {
+          formattedContents.push({
+            role: msg.role === "user" ? "user" : "model",
+            parts: [{ text: msg.text || msg.content || "" }],
+          });
+        }
       });
     }
+
+    const config = {
+      systemInstruction: systemInstructionInput,
+      temperature: 0.7,
+    };
 
     // Append current message
     formattedContents.push({

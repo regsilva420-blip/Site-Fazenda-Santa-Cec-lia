@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Sparkles, Send, RefreshCw, Bot, User, CornerDownLeft, HelpCircle, X } from "lucide-react";
+import { FAZENDA_KNOWLEDGE } from "../data/fazenda-knowledge";
 
 interface Message {
   role: "user" | "model";
@@ -48,7 +49,10 @@ export default function ConciergeChat() {
     setLoading(true);
 
     try {
-      const chatHistory = updatedMessages.slice(1, -1); // ignore greeting and current message
+      const chatHistory = [
+        { role: "system", text: FAZENDA_KNOWLEDGE },
+        ...updatedMessages.slice(1, -1)
+      ];
 
       const response = await fetch("/api/chat", {
         method: "POST",
