@@ -115,7 +115,7 @@ export default function RecursosHidricosPage({ onBack }: RecursosHidricosPagePro
               Riacho Natural
             </h2>
             <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Curso d'água que corta a propriedade, trazendo o som da natureza.
+              Curso d’água que corta a propriedade, trazendo o lazer do banho de riacho e o som da natureza.
             </p>
           </div>
 

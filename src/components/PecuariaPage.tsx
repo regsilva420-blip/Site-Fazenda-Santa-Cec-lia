@@ -95,7 +95,7 @@ export default function PecuariaPage({ onBack }: PecuariaPageProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-sm md:text-base text-gray-300 font-light leading-relaxed max-w-3xl"
           >
-            Múltiplas instalações prontas para o manejo de diferentes espécies, de produção comercial a uso casual.
+            Estruturas versáteis, prontas para o manejo de diferentes espécies, da produção comercial à vivência rural.
           </motion.p>
         </section>
 
