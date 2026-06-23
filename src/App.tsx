@@ -430,7 +430,7 @@ export default function App() {
       </section>
 
       {/* 3. ESTRUTURA DAS SEÇÕES (Cards Panorâmicos Edge-to-Edge) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-1 bg-black overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-1 bg-black overflow-hidden">
         {FeaturesData.map((feature) => (
           <motion.article 
             key={feature.id}
