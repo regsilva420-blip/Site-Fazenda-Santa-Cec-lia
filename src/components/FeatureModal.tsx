@@ -6,11 +6,10 @@ import { FeatureCard } from "../types";
 interface FeatureModalProps {
   feature: FeatureCard | null;
   onClose: () => void;
-  onAskConcierge: (topic: string) => void;
   onOpenContact: (topic: string) => void;
 }
 
-export default function FeatureModal({ feature, onClose, onAskConcierge, onOpenContact }: FeatureModalProps) {
+export default function FeatureModal({ feature, onClose, onOpenContact }: FeatureModalProps) {
   if (!feature) return null;
 
   // Render responsive category helper icons

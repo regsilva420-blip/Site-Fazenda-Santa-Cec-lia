@@ -9,7 +9,6 @@ import { FeaturesData, FeatureCard } from "./types";
 import FeatureModal from "./components/FeatureModal";
 import InteractiveMap from "./components/InteractiveMap";
 import InvestmentCalculator from "./components/InvestmentCalculator";
-import ConciergeChat from "./components/ConciergeChat";
 import ForestPage from "./components/ForestPage";
 import PropertyAreaPage from "./components/PropertyAreaPage";
 import CasaSedePage from "./components/CasaSedePage";
@@ -33,7 +32,6 @@ export default function App() {
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [conciergeTopic, setConciergeTopic] = useState<string | null>(null);
   const [contactSubject, setContactSubject] = useState<string>("Geral - Fazenda Santa Cecília");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
@@ -131,16 +129,6 @@ export default function App() {
     }
   };
 
-  const handleAskConcierge = (topic: string) => {
-    // Open chat floating trigger and pre-populate context or set state
-    setConciergeTopic(topic);
-    // Find the chat button and click if existing, or trigger state inside ConciergeChat
-    const chatbotTrigger = document.querySelector('[aria-label="Toggle concierge concierge assistant"]') as HTMLButtonElement;
-    if (chatbotTrigger) {
-      chatbotTrigger.click();
-    }
-  };
-
   const handleOpenContact = (topic: string) => {
     setContactSubject(topic);
     const contactSection = document.getElementById("agendar-visita");
@@ -161,7 +149,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <ForestPage onBack={() => handleBackToHome("secao-01")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -170,7 +157,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <PropertyAreaPage onBack={() => handleBackToHome("secao-02")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -179,7 +165,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <CasaSedePage onBack={() => handleBackToHome("secao-03")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -188,7 +173,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <AreaLazerPage onBack={() => handleBackToHome("secao-04")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -197,7 +181,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <RecursosHidricosPage onBack={() => handleBackToHome("secao-05")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -206,7 +189,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <ProducaoAgricolaPage onBack={() => handleBackToHome("secao-06")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -215,7 +197,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <PecuariaPage onBack={() => handleBackToHome("secao-07")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -224,7 +205,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <InfraestruturaPage onBack={() => handleBackToHome("secao-08")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -233,7 +213,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <MaquinariosPage onBack={() => handleBackToHome("secao-09")} />
-        <ConciergeChat />
       </div>
     );
   }
@@ -580,9 +559,6 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating virtual AI Concierge helper */}
-      <ConciergeChat />
-
       {/* Contact Selection Modal */}
       <AnimatePresence>
         {isContactModalOpen && (
@@ -667,7 +643,6 @@ export default function App() {
           <FeatureModal 
             feature={selectedFeature} 
             onClose={() => setSelectedFeature(null)} 
-            onAskConcierge={handleAskConcierge}
             onOpenContact={handleOpenContact}
           />
         )}
