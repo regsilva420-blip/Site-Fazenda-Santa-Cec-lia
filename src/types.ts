@@ -181,27 +181,6 @@ export const FeaturesData: FeatureCard[] = [
       "Rede trifásica privada com transformador e cabeamento subterrâneo",
       "Guarita de segurança e portão de acesso eletrônico no pórtico de entrada"
     ]
-  },
-  {
-    id: "maquinario",
-    category: "Frota Completa",
-    title: "Maquinários e Equipamentos",
-    subtitle: "Galpão industrial equipado e tratores John Deere",
-    image: "https://kogtreqhrypilvkiojce.supabase.co/storage/v1/object/public/capa-sec-09/capa-sec-09.jpg",
-    shortDesc: "Oficina montada profissional, frota operacional robusta e rede elétrica trifásica com gerador automático.",
-    detailedDesc: "Segurança de operação contínua de ponta a ponta. O setor de apoio logístico apresenta um galpão maciço em vigas metálicas galvanizadas e cobertura acústica para proteção das máquinas. A fazenda é entregue com trator John Deere traçado de excelente potência e implementos operacionais. Conta com gerador a diesel automático capaz de manter o bombeamento, a estufa e as ordenhadeiras ativas de forma autônoma em caso de interrupção na rede elétrica trifásica de alta tensão.",
-    metrics: [
-      { label: "Trator Traçado", value: "John Deere c/ Implementos" },
-      { label: "Rede Elétrica", value: "Trifásica c/ Transf. Próprio" },
-      { label: "Energia de Reserva", value: "Gerador Automático de 50kVA" },
-      { label: "Oficina Dedicada", value: "Totalmente Equipada" }
-    ],
-    specifications: [
-      "Galpão para máquinas de 200m² com vala de manutenção",
-      "Implementos inclusos: Roçadeira, grade niveladora e perfurador de solo",
-      "Compressores de ar de alta pressão da Schulz e lavadoras industriais",
-      "Quadro de comando de bombas centralizado e automatizado"
-    ]
   }
 ];
 

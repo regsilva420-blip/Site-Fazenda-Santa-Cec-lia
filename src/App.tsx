@@ -17,7 +17,6 @@ import RecursosHidricosPage from "./components/RecursosHidricosPage";
 import ProducaoAgricolaPage from "./components/ProducaoAgricolaPage";
 import PecuariaPage from "./components/PecuariaPage";
 import InfraestruturaPage from "./components/InfraestruturaPage";
-import MaquinariosPage from "./components/MaquinariosPage";
 
 export default function App() {
   const [viewingForest, setViewingForest] = useState(false);
@@ -28,7 +27,6 @@ export default function App() {
   const [viewingProducaoAgricola, setViewingProducaoAgricola] = useState(false);
   const [viewingPecuaria, setViewingPecuaria] = useState(false);
   const [viewingInfraestrutura, setViewingInfraestrutura] = useState(false);
-  const [viewingMaquinarios, setViewingMaquinarios] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureCard | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +51,6 @@ export default function App() {
     setViewingProducaoAgricola(false);
     setViewingPecuaria(false);
     setViewingInfraestrutura(false);
-    setViewingMaquinarios(false);
     
     window.location.hash = sectionId;
     
@@ -75,8 +72,7 @@ export default function App() {
       viewingRecursosHidricos || 
       viewingProducaoAgricola || 
       viewingPecuaria || 
-      viewingInfraestrutura || 
-      viewingMaquinarios;
+      viewingInfraestrutura;
 
     if (!isViewingAnyDetail) {
       const hash = window.location.hash;
@@ -98,8 +94,7 @@ export default function App() {
     viewingRecursosHidricos, 
     viewingProducaoAgricola, 
     viewingPecuaria, 
-    viewingInfraestrutura, 
-    viewingMaquinarios
+    viewingInfraestrutura
   ]);
 
   const handleLearnMore = (id: string) => {
@@ -121,8 +116,6 @@ export default function App() {
         setViewingPecuaria(true);
       } else if (id === "infraestrutura") {
         setViewingInfraestrutura(true);
-      } else if (id === "maquinario") {
-        setViewingMaquinarios(true);
       } else {
         setSelectedFeature(found);
       }
@@ -205,14 +198,6 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
         <InfraestruturaPage onBack={() => handleBackToHome("secao-08")} />
-      </div>
-    );
-  }
-
-  if (viewingMaquinarios) {
-    return (
-      <div className="min-h-screen bg-[#070808] text-white selection:bg-gold selection:text-dark">
-        <MaquinariosPage onBack={() => handleBackToHome("secao-09")} />
       </div>
     );
   }
@@ -305,8 +290,7 @@ export default function App() {
                     { label: "Recursos Hídricos", id: "secao-05" },
                     { label: "Produção Agrícola", id: "secao-06" },
                     { label: "Pecuária", id: "secao-07" },
-                    { label: "Infraestrutura", id: "secao-08" },
-                    { label: "Maquinários e Equipamentos", id: "secao-09" }
+                    { label: "Infraestrutura", id: "secao-08" }
                   ].map((item, idx) => (
                     <a
                       key={idx}
